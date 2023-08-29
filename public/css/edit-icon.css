@@ -1,0 +1,17 @@
+.edit {
+    height: 25px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 25px;
+    z-index:9;
+}
+
+.fa-pencil {
+    transition: font-size 0.1s;
+}
+
+.fa.fa-pencil.edit:hover {
+    cursor: pointer;
+    font-size: 30px;
+}
