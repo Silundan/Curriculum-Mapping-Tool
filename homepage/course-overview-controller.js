@@ -4,7 +4,7 @@ async function main(req, res) {
     const mysql2 = require('mysql2/promise');
 
     const connection = await mysql2.createConnection({
-        host: 'database-2.cwlp4i7l59rt.ap-southeast-2.rds.amazonaws.com',
+        host: '127.0.0.1',
         user: 'admin',
         password: '12345678', //请与上一步在数据库设置的密码相同
         database: 'adelaide'
