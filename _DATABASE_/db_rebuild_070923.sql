@@ -72,7 +72,7 @@ CREATE TABLE `degree` (
 
 LOCK TABLES `degree` WRITE;
 /*!40000 ALTER TABLE `degree` DISABLE KEYS */;
-INSERT INTO `degree` VALUES ('Master of Computer Science','Unknown_dg_content','Core');
+INSERT INTO `degree` VALUES ('Bachelor of Bachelor of IT','',NULL),('Master of Computer Science','Unknown_dg_content','Core');
 /*!40000 ALTER TABLE `degree` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -99,7 +99,7 @@ CREATE TABLE `degree_course` (
 
 LOCK TABLES `degree_course` WRITE;
 /*!40000 ALTER TABLE `degree_course` DISABLE KEYS */;
-INSERT INTO `degree_course` VALUES ('Master of Computer Science','Core','Unknown_dg-course_sup','COMP SCI 2000','Unknown_dg-course_name');
+INSERT INTO `degree_course` VALUES ('Bachelor of Bachelor of IT','core','','',''),('Master of Computer Science','Core','Unknown_dg-course_sup','COMP SCI 2000','Unknown_dg-course_name');
 /*!40000 ALTER TABLE `degree_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,8 +112,8 @@ DROP TABLE IF EXISTS `degree_streams`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `degree_streams` (
   `degree` varchar(255) NOT NULL,
-  `streams` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`degree`)
+  `streams` varchar(255) NOT NULL,
+  PRIMARY KEY (`degree`,`streams`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -123,7 +123,7 @@ CREATE TABLE `degree_streams` (
 
 LOCK TABLES `degree_streams` WRITE;
 /*!40000 ALTER TABLE `degree_streams` DISABLE KEYS */;
-INSERT INTO `degree_streams` VALUES ('Unknown_dg-str_degree','Unknown_dg-str_streams');
+INSERT INTO `degree_streams` VALUES ('Bachelor of Bachelor of IT','Core'),('Unknown_dg-str_degree','Unknown_dg-str_streams');
 /*!40000 ALTER TABLE `degree_streams` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -136,4 +136,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-07 18:25:24
+-- Dump completed on 2023-09-07 18:36:51
