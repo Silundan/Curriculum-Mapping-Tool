@@ -24,7 +24,7 @@ app.use(express.urlencoded({extended: true}))
 
 /* Connection String to Database */
 var mysqlConnection = mysql.createConnection({
-    host: 'database-2.cwlp4i7l59rt.ap-southeast-2.rds.amazonaws.com',
+    host: '127.0.0.1',
     user: 'admin',
     password: '12345678', //请与上一步在数据库设置的密码相同
     port: '3306'
