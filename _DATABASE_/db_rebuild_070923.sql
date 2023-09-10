@@ -34,7 +34,7 @@ CREATE TABLE `course` (
   `pre_requisite` varchar(255) DEFAULT NULL,
   `Incompatibale` varchar(255) DEFAULT NULL,
   `belongs_to` varchar(255) DEFAULT NULL,
-  `units` int DEFAULT NULL,
+  `units` varchar(45) DEFAULT NULL,
   `term` varchar(45) DEFAULT NULL,
   `career` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`course_code`)
