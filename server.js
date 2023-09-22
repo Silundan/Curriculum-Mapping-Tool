@@ -27,7 +27,6 @@ connPool.getConnection((err, connection) => {
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apiRoutes = require('./routes/apiRoutes');
-var usersRouter = require('./routes/users');
 var app = express();
 
 app.use(function(req, res, next) {
@@ -48,6 +47,5 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 module.exports = app;
-app.use('/users', usersRouter);
 
 app.listen(9000, () => console.log('Example app is listening on port 9000.'));
