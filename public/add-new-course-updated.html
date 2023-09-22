@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../public/css/add-new-course.css">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script type="text/javascript" src="js/main.js" defer></script>
+        <meta charset="UTF-8">
+        <title>Add New Course</title>
+    </head>
+    <body>
+        <!-- hyperlinks to other pages -->
+        <div class="section modal-container header-content">
+            <!-- <a href="/">Home</a> -->
+            <a href="/add-course.html" target="_self">Add Course</a>
+            <a href="/add-new-course-updated.html" target="_self">Add New Course</a>
+            <a href="/add-new-degree-updated.html" target="_self">Add New Degree</a>
+            <a href="/edit-course.html" target="_self">Edit Course</a>
+        </div>
+        <div class="center content">
+            <!-- Text inputs -->
+            <p>Course number: </p>
+            <input type="text">
+            <p>Course name: </p>
+            <input type="text">
+            <p>Prerequisite course: </p>
+            <input type="text">
+            <p>Incompatible courses: </p>
+            <input type="text"><br>
+            <!-- Confirm button -->
+            <button>Add course</button>
+        </div>
+    </body>
+</html>
