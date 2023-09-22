@@ -7,6 +7,11 @@
 
 /* aligns login form to center*/
 
+
+.textsize {
+    font-size: relative;
+}
+
 .center {
     width: 50%;
     margin: auto;
@@ -33,17 +38,8 @@
 }
 
 /* type=text indicates that it is a normal textbox field*/
-.input[type=text] {
-    width: 100%;
-    display: inline-flex;
-    padding: 10px 25px;
-    margin: 10px 0;
-    border-radius: 0.5rem;
-    border: none;
-}
-
 /* type=password indicates that it is a password textbox field and censors the input words*/
-.input[type=password] {
+.input {
     width: 100%;
     display: inline-flex;
     padding: 10px 25px;
