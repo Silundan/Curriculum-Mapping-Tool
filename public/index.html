@@ -96,8 +96,7 @@
                 <li v-for="degree in degree" class="degree-item">
                   <div class="degree-box">
                     <div class="degree-name">{{ degree.name }}</div>
-                    <div>Level: {{ degree.level }}</div>
-                    <div>Suffix: {{ degree.name_suffix }}</div>
+                    <div>Degree: {{ level[degree.level].level_type }} {{ level[degree.level].level_prefix }} {{ degree.name_suffix }}</div>
                   </div>
                 </li>
             </ul>

@@ -44,7 +44,7 @@ const vuectrl = Vue.createApp({
                         
                         vuectrl[dest_var] = JSON.parse(req.response);
                     }
-                }else{
+                }else if (req.readyState === 4 && req.status !== 200){
                     vuectrl.errorMessage = "Error fetching data from " + target_loc + ". Status: " + req.status;
                 }
             };
