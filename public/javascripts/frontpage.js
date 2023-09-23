@@ -15,7 +15,8 @@ const vuectrl = Vue.createApp({
             term: ["Semester 1", "Semester 2", "All year"],
             pre_requisites: [],
             incompatibles: [],
-            errorMessage: null
+            errorMessage: null,
+            displayDegree: true
         };
     },
     methods: {
