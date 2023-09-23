@@ -82,8 +82,10 @@
 
 
         <div id="background_two_buttons">
-                <button class="sub_button_format"> Degree </button>
-                <button class="sub_button_format"> Course </button>
+                <div class="toggle-buttons">
+                    <button @click="toggleDisplay('degree')" :class="{ selected: displayDegree }">Degree</button>
+                    <button @click="toggleDisplay('course')" :class="{ selected: displayCourse }">Course</button>
+                </div>
         
                 <div id="add_degree">
                     <a href="#"> + Add new degree 
@@ -92,12 +94,22 @@
 
         <div class="placeholder_div">
             
-            <ul class="degree-list">
+            <ul class="degree-list" v-if="displayDegree">
                 <li v-for="degree in degree" class="degree-item">
                   <div class="degree-box">
                     <div class="degree-name">{{ degree.name }}</div>
                     <div>Degree: {{ level[degree.level].level_type }} {{ level[degree.level].level_prefix }} {{ degree.name_suffix }}</div>
                   </div>
+                </li>
+            </ul>
+            <ul class="degree-list" id="course-list" v-if="displayCourse">
+                <li v-for="course in course" class="degree-item">
+                    <div class="degree-box">
+                        <div class="course-name">{{ course.course_name }}</div>
+                        <div>Code: {{ course.course_code }}</div>
+                        <div>Units: {{ course.units }}</div>
+                        <div>Term: {{ course.term }}</div>
+                    </div>
                 </li>
             </ul>
               
