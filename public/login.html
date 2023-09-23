@@ -18,14 +18,13 @@
         </div>
         <!-- login form -->
         <form>
-            <div  id="mainDiv" class="center container textsize">
+            <div id="mainDiv" class="center container textsize">
                 <!-- Email field -->
                 <div class="center"><label>Email:</label></div></br>
-                <div class="center"><input  v-model="email"  class="input" type="text"></input></div></br> 
-
+                <div class="center"><input  v-model="email"  class="input" type="text"></input></div></br>
                 <!-- Password field -->
                 <div class="center"><label>Password: </label></div></br>
-                <div class="center"><input  v-model="password" class="input[type=password]" type="password"></input></div></br>
+                <div class="center"><input  v-model="password" class="input" type="password"></input></div></br>
                 <div class="center">
                     <button class="btn-signin" @click.prevent="login()"><div class="inside_button"> Sign In </div></button>
                     <button  class="btn-reg" @click.prevent="reg()"><div class="inside_button"> Create Account</div></button> 

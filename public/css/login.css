@@ -39,13 +39,8 @@
 
 /* type=text indicates that it is a normal textbox field*/
 /* type=password indicates that it is a password textbox field and censors the input words*/
-.input {
-    width: 100%;
-    display: inline-flex;
-    padding: 10px 25px;
-    margin: 10px 0;
-    border-radius: 0.5rem;
-    border: none;
+.input:focus-visible {
+    border: black;
 }
 
 .container {
