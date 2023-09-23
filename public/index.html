@@ -4,7 +4,7 @@
     <title>Project8 Curriculum mapping tool</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="/javascripts/frontpage.js" defer></script>
+    <script src="/javascripts/main.js" defer></script>
     <link rel="icon" type="image/x-icon" href="images/icons8-study-64.png">
     <script src="https://unpkg.com/vue@3"></script>
 
@@ -101,15 +101,14 @@
                 <li v-for="degree in degree" class="degree-item">
                   <div class="degree-box">
                     <div class="degree-name">{{ degree.name }}</div>
-                    <div>Degree: {{ level[degree.level].level_type }} {{ level[degree.level].level_prefix }} {{ degree.name_suffix }}</div>
+                    <div>{{ level[degree.level].level_type }} {{ level[degree.level].level_prefix }} {{ degree.name_suffix }}</div>
                   </div>
                 </li>
             </ul>
             <ul class="degree-list" id="course-list" v-if="displayCourse">
                 <li v-for="course in course" class="degree-item">
                     <div class="degree-box">
-                        <div class="course-name">{{ course.course_name }}</div>
-                        <div>Course Code: {{ stream[course.stream_id].stream_name }} {{ course.course_code }}</div>
+                        <div class="course-name">{{ stream[course.stream_id].stream_name }} {{ course.course_code }} - {{ course.course_name }}</div>
                         <div>Units: {{ course.units }}</div>
                         <div>Available Semester: {{ term[course.term] }}</div>
                     </div>

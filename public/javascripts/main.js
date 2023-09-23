@@ -12,7 +12,7 @@ const vuectrl = Vue.createApp({
             degree: [],
             degree_course: [],
             type: ["core", "elective","core & elective", "project", "core & project", "elective & project", "core, elective & project"],
-            term: ["", "Semester 1", "Semester 2", "All year"],
+            term: ["", "Semester 1", "Semester 2", "All Semesters", "Trimester 1", "Trimester 2", "Trimester 3", "All Trimesters"],
             pre_requisites: [],
             incompatibles: [],
             errorMessage: null,
