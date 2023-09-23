@@ -10,6 +10,7 @@
 
 .textsize {
     font-size: relative;
+    text-align: center;
 }
 
 .center {
@@ -17,24 +18,17 @@
     margin: auto;
 }
 
-.btn-signin {
-    background-color: #39A2Db;
-    
-    border: none;
-    width: 100%;
-    display: inline-flex;
-    margin: 8px 10px;
-    padding: 10px 25px;
-}
-
 .btn-reg {
-    background-color: #39A2Db;
- 
-    border: none;
+    text-align: center;
+    box-shadow: #0000004c;
+    cursor: pointer;
+    gap: 10px;
     width: 100%;
-    display: inline-flex;
-    margin: 8px 10px;
-    padding: 10px 25px;
+    display: flex;
+    padding: 4px 6px;
+    justify-content: space-around;
+    font-size: smaller;
+    font-family: Blinker;
 }
 
 /* type=text indicates that it is a normal textbox field*/

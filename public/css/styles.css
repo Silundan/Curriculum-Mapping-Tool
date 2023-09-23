@@ -381,7 +381,7 @@ white-space: nowrap;
     padding-right: 10px;
     padding-top: 10px;
     position: right;
-    float: right;
+    float: right 0;
 }
 
 .toggle-buttons {
