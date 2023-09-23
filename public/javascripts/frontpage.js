@@ -16,11 +16,20 @@ const vuectrl = Vue.createApp({
             pre_requisites: [],
             incompatibles: [],
             errorMessage: null,
-            displayDegree: true
+            displayDegree: true,
+            displayCourse: false
         };
     },
     methods: {
-        
+        toggleDisplay(type) {
+            if (type === 'degree') {
+                this.displayDegree = true;
+                this.displayCourse = false;
+            } else if (type === 'course') {
+                this.displayDegree = false;
+                this.displayCourse = true;
+            }
+        },
         doSearching() {
             console.log("Searching...");
             },
