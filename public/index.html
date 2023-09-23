@@ -87,8 +87,11 @@
                     <button @click="toggleDisplay('course')" :class="{ selected: displayCourse }">Course</button>
                 </div>
         
-                <div id="add_degree">
-                    <a href="#"> + Add new degree 
+                <div id="add_degree" v-if="displayDegree">
+                    <a href="#"> + Add new degree</a>
+                </div>
+                <div id="add_course" v-if="displayCourse">
+                    <a href="#"> + Add new course</a>
                 </div>
         </div>
 
@@ -106,9 +109,9 @@
                 <li v-for="course in course" class="degree-item">
                     <div class="degree-box">
                         <div class="course-name">{{ course.course_name }}</div>
-                        <div>Code: {{ course.course_code }}</div>
+                        <div>Course Code: {{ stream[course.stream_id].stream_name }} {{ course.course_code }}</div>
                         <div>Units: {{ course.units }}</div>
-                        <div>Term: {{ course.term }}</div>
+                        <div>Available Semester: {{ term[course.term] }}</div>
                     </div>
                 </li>
             </ul>
