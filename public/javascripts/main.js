@@ -10,6 +10,7 @@ const vuectrl = Vue.createApp({
             level: [],
             course: [],
             degree: [],
+            searchQuery: '',
             degree_course: [],
             type: ["core", "elective","core & elective", "project", "core & project", "elective & project", "core, elective & project"],
             // term: ["", "Semester 1", "Semester 2", "All Semesters", "Trimester 1", "Trimester 2", "Trimester 3", "All Trimesters"],
@@ -40,9 +41,41 @@ const vuectrl = Vue.createApp({
                 this.displayCourse = true;
             }
         },
+        
         doSearching() {
-            console.log("Searching...");
-            },
+            const searchQuery = this.searchQuery.trim(); 
+            const searchScope = document.getElementById("demo-label").value;
+            if (searchQuery) {
+                let apiUrl = ''; 
+    
+                switch (searchScope) {
+                    case 'get_courses':
+                        apiUrl = `/api/search?course-name=${searchQuery}`;
+                        break;
+                    case 'get_Degrees':
+                        apiUrl = `/api/search?degree-name=${searchQuery}`;
+                        break;
+                    default:
+                        apiUrl = `/api/search?all-categories=${searchQuery}`;
+                        break;
+                }
+    
+            
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                    
+                        this.course = data.courses;
+                        this.degree = data.degrees;
+                    })
+                    .catch(error => {
+                        console.error("Error fetching search results:", error);
+                    });
+                } else {
+                    alert("Please enter a search.");
+                }
+        },
+        
         doLogin() {
             console.log("login...");
             window.location.href = "login.html";
