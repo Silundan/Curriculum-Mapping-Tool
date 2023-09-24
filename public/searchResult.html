@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Project8 Curriculum mapping tool</title>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="/javascripts/main.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="images/icons8-study-64.png">
+    <script src="https://unpkg.com/vue@3"></script>
+
+</head>
+
+<body>
+    <div id="mainDiv">
+        <div id ="Header">
+            <a href="/">Curriculum Helper</a>
+            <button id="theme_change">
+                <a href="#"> Theme Change</a>
+            </button>
+        </div>
+
+        <nav class="nav_bar">
+            <a class="nav_unit" href="#">PlaceHolder1</a>
+            <a class="nav_unit" href="#">PlaceHolder2</a>
+            <a class="nav_unit" href="#">PlaceHolder3</a>
+            <a class="nav_unit" href="#">PlaceHolder4</a>
+            <button id="btnLogin" class="button_login" @click="doLogin()">
+                <div class="button_login"> Login </div>
+            </button>
+        </nav>
+        <div v-for="c in course" :key="c.course_id" class="course-display">
+            <h3>{{ c.course_name }}</h3>
+            <p>{{ c.course_code }}</p>
+        </div>
+        <div v-for="d in degree" :key="d.degree_id" class="degree-display">
+            <h3>{{ d.degree_name }}</h3>
+        </div>
+        
+        
+
+
+        <footer class="footer">
+            <p class="footer-text">© Team8 2023 All rights reserved</p>
+    </footer>
+</div>
+</body>
+</html>       
