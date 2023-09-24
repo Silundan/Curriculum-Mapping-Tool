@@ -56,3 +56,15 @@
 h2 {
     color: grey;
 }
+
+#Header {
+    align-items: center;
+    background-color:#918f8a;
+    display: flex;
+    height: 70px;
+    max-height: 70px;
+    padding-left: 37px;
+    padding-right: 37px; 
+    width: 123%;
+    margin: auto;
+}

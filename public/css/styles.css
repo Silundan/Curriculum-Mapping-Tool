@@ -368,8 +368,6 @@ input {
   
   .button_login{
     align-items: center;
-    background-color: white;
-    box-shadow: 0px 0px 10px #0000004c;
     cursor: pointer;
     display: flex;
     gap: 10px;
