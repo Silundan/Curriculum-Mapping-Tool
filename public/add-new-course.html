@@ -4,6 +4,7 @@
         <!-- <link rel="stylesheet" type="text/css" href="../public/css/add-new-course.css"> -->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script src="/javascripts/main.js" defer></script>
+        <script src="/javascripts/add_things.js"></script>
         <meta charset="UTF-8">
         <title>Add New Course</title>
     </head>
@@ -31,8 +32,8 @@
                     <input type="text" id="course_name">
                     <br><br>
                     <!-- Course Link href -->
-                    <label for="coursename_href">Course Link: </label>
-                    <input type="text" id="coursename_href">
+                    <label for="courselink_href">Course Link: </label>
+                    <input type="text" id="courselink_href">
                     <br><br>
                     <!-- Units -->
                     <label for="units"> Units: </label>
@@ -40,6 +41,14 @@
                         <option value="3">3</option>
                         <option value="6">6</option>
                         <option value="9">9</option>
+                    </select>
+                    <br><br>
+                    <!-- Terms -->
+                    <label for="terms"> Available Term(s): </label>
+                    <select name="terms" id="terms">
+                        <template v-for="term in term">
+                            <option :value="term.t" v-if="term.t > 0"> {{ term.s }}</option>
+                        </template>
                     </select>
                     <br><br>
                     <!-- Pre-requisite -->
@@ -57,7 +66,8 @@
                     <input type="text" id="IN_course_code">
                     <br><br>
                     <!-- Confirm button -->
-                    <button>Add course</button>
+                    <button type="button" onclick="addNewCourse()">Add course</button> 
+                    <button type="reset">Reset</button>
                 </div>
             </form>
         </div>

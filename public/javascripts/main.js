@@ -12,7 +12,17 @@ const vuectrl = Vue.createApp({
             degree: [],
             degree_course: [],
             type: ["core", "elective","core & elective", "project", "core & project", "elective & project", "core, elective & project"],
-            term: ["", "Semester 1", "Semester 2", "All Semesters", "Trimester 1", "Trimester 2", "Trimester 3", "All Trimesters"],
+            // term: ["", "Semester 1", "Semester 2", "All Semesters", "Trimester 1", "Trimester 2", "Trimester 3", "All Trimesters"],
+            term: {
+                0: {t: 0, s: ""},
+                1: {t: 1, s: "Semester 1"},
+                2: {t: 2, s: "Semester 2"},
+                3: {t: 3, s: "All Semesters"},
+                4: {t: 4, s: "Trimester 1"},
+                5: {t: 5, s: "Trimester 2"},
+                6: {t: 6, s: "Trimester 3"},
+                7: {t: 7, s: "All Trimesters"}
+            },
             pre_requisites: [],
             incompatibles: [],
             errorMessage: null,
@@ -51,10 +61,9 @@ const vuectrl = Vue.createApp({
             req.onreadystatechange = function () {
                 if (req.readyState === 4 && req.status === 200) {
                     if (req.response) {
-                        
                         vuectrl[dest_var] = JSON.parse(req.response);
                     }
-                }else if (req.readyState === 4 && req.status !== 200){
+                } else if (req.readyState === 4 && req.status !== 200) {
                     vuectrl.errorMessage = "Error fetching data from " + target_loc + ". Status: " + req.status;
                 }
             };

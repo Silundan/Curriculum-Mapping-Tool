@@ -1,6 +1,5 @@
 var express = require('express');
 var path = require('path');
-// var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mysql = require('mysql');
 
@@ -35,17 +34,15 @@ app.use(function(req, res, next) {
 });
 
 
-app.use('/api', apiRoutes);
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api', apiRoutes);
 app.use('/users', usersRouter);
 
 module.exports = app;
 
-app.listen(9000, () => console.log('Example app is listening on port 9000.'));
+app.listen(9000, () => console.log('Curriculum Mapping Tool is listening on port 9000.'));
