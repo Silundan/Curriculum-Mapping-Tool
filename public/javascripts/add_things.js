@@ -1,23 +1,10 @@
-function addNewCourse(){
-    let stream_id = document.getElementById('stream').value;
-    let course_code = document.getElementById('course_code').value;
-    let course_name = document.getElementById('course_name').value;
-    let courselink_href = document.getElementById('courselink_href').value;
-    let units = document.getElementById('units').value;
-    let terms = document.getElementById('terms').value;
-    // let PR_stream_id = document.getElementById('PR_stream_id').value;
-    // let PR_course_code = document.getElementById('PR_course_code').value;
-    // let IN_stream_id = document.getElementById('IN_stream_id').value;
-    // let IN_course_code = document.getElementById('IN_course_code').value;
-
-    let container = {stream_id, course_code, course_name, courselink_href, units, terms};
-    console.log(JSON.stringify(container));
-
+function doAJAX(container, target_loc) {
     let req = new XMLHttpRequest();
     req.onreadystatechange = function () {
         if (req.readyState === 4 && req.status === 200) {
             if (req.response) {
                 console.log("Success");
+                console.log(req.response);
             } else {
                 console.log("Fail");
             }
@@ -27,7 +14,34 @@ function addNewCourse(){
             console.log("Error saving data to the database. Status: " + req.status);
         }
     }
-    req.open("POST", "/users/addNewCourse");
+    req.open("POST", target_loc);
     req.setRequestHeader('Content-Type', 'application/json');
     req.send(JSON.stringify(container));
+}
+
+function addNewCourse() {
+    let degree_id = document.getElementById('degree').value;
+    let type = 0;
+    if (document.getElementById('core').checked) {
+        type += 1;
+    }
+    if (document.getElementById('elective').checked) {
+        type += 2;
+    }
+    if (document.getElementById('project').checked) {
+        type += 4;
+    }
+
+    // Adding course
+    let stream_id = document.getElementById('stream').value;
+    let course_code = document.getElementById('course_code').value;
+    let course_name = document.getElementById('course_name').value;
+    let courselink_href = document.getElementById('courselink_href').value;
+    let units = document.getElementById('units').value;
+    let terms = document.getElementById('terms').value;
+
+    let container = {degree_id, type, stream_id, course_code, course_name, courselink_href, units, terms};
+
+    doAJAX(container, "/users/addNewCourse");
+
 }

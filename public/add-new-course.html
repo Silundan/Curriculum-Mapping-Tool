@@ -20,6 +20,18 @@
             </div>
             <form>
                 <div class="center content">
+                    <!-- Associated Degree -->
+                    <label for="degree">Degree: </label>
+                    <select name="degree" id="degree">
+                        <option v-for="degree in degree" :value="degree.degree_id">{{ level[degree.level].level_type }} {{ level[degree.level].level_prefix }} {{ degree.name_suffix }}</option>
+                    </select>
+                    <br><br>
+                    <!-- Course Type -->
+                    <label>Course Type: </label>
+                    <input type="checkbox" id="core"><label for="core"> Core</label>
+                    <input type="checkbox" id="elective"><label for="elective"> Elective</label>
+                    <input type="checkbox" id="project"><label for="project"> Project</label>
+                    <br><br>
                     <!-- Course Code -->
                     <label for="stream_id">Course code: </label>
                     <select name="stream" id="stream">

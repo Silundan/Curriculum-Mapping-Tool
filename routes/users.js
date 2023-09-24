@@ -97,10 +97,11 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.post('/addNewCourse', (req, res, next) => {
-  let {stream_id, course_code, course_name, courselink_href, units, terms} = req.body;
-  if (isNaN(stream_id) || isNaN(units) || isNaN(terms)) {
-    res.send().status(400);
+router.post('/addNewCourse', (req, res) => {
+  var new_course_id = 0;
+  let {degree_id, type, stream_id, course_code, course_name, courselink_href, units, terms} = req.body;
+  if (isNaN(degree_id) || isNaN(type) || isNaN(stream_id) || isNaN(units) || isNaN(terms)) {
+    res.sendStatus(400);
   }
   let query = "INSERT INTO course (stream_id, course_code, course_name, courselink_href, units, term) VALUES (?,?,?,?,?,?)";
   let sanCourseName = sanitizeHtml(course_name);
@@ -110,10 +111,35 @@ router.post('/addNewCourse', (req, res, next) => {
     if (error) {
       console.log(error.message);
       res.status(500).json({ error: error.message });
-    } else {
-      res.send("Success").status(200);
+      return;
     }
+    console.log(results.insertId);
+    new_course_id = results.insertId;
+    console.log(new_course_id);
+    
+    query = "INSERT INTO degree_course (degree_id, course_id, type) VALUES (?,?,?)";
+    console.log(new_course_id);
+    req.pool.query(query, [degree_id, new_course_id, type], (error, results, next) => {
+      if (error) {
+        console.log(error.message);
+        res.status(500).json({ error: error.message });
+        return;
+      }
+      res.sendStatus(200);
+    });
   });
+
+  // query = "INSERT INTO pre_requisite (src_course_id, target_course_id) VALUES (?,?)";
+  // req.pool.query(query, [new_course_id, type], (error, results, next) => {
+  //   if (error) {
+  //     console.log(error.message);
+  //     res.status(500).json({ error: error.message });
+  //     return;
+  //   } else {
+  //     next;
+  //   }
+  // });
+
 });
 
 module.exports = router;
