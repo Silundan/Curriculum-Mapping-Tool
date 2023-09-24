@@ -35,7 +35,7 @@ CREATE TABLE `course` (
   PRIMARY KEY (`course_id`),
   KEY `fk_course_1_idx` (`stream_id`),
   CONSTRAINT `fk_course_1` FOREIGN KEY (`stream_id`) REFERENCES `course_stream` (`stream_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (2,1,'3313','Software Engineering & Project (Distributed Systems & Networking)','https://www.adelaide.edu.au/degree-finder/2022/bcmsa_bcmpscadv.html','3',3),(3,1,'3012','Distributed Systems','https://www.adelaide.edu.au/degree-finder/2022/bcmsa_bcmpscadv.html','3',3),(4,1,'3310','Software Engineering & Project (Artificial Intelligence)','https://www.adelaide.edu.au/degree-finder/2022/bcmsa_bcmpscadv.html','3',3),(5,1,'3312','Software Engineering & Project (Cybersecurity)','https://www.adelaide.edu.au/degree-finder/2022/bcmsa_bcmpscadv.html','3',3);
+INSERT INTO `course` VALUES (0,0,'3313','Software Engineering & Project (Distributed Systems & Networking)','https://www.adelaide.edu.au/degree-finder/2024/bcmsa_bcmpscadv.html','3',3),(1,0,'3012','Distributed Systems','https://www.adelaide.edu.au/degree-finder/2024/bcmsa_bcmpscadv.html','3',3),(2,0,'3310','Software Engineering & Project (Artificial Intelligence)','https://www.adelaide.edu.au/degree-finder/2024/bcmsa_bcmpscadv.html','3',3),(3,0,'3312','Software Engineering & Project (Cybersecurity)','https://www.adelaide.edu.au/degree-finder/2024/bcmsa_bcmpscadv.html','3',3),(4,0,'3006','Software Engineering & Project','https://www.adelaide.edu.au/degree-finder/2024/bcmsa_bcmpscadv.html','3',2),(5,0,'2203','Problem Solving & Software Development','https://www.adelaide.edu.au/degree-finder/2024/bcmsa_bcmpscadv.html','3',2),(6,0,'1010','Puzzle Based Learning','https://www.adelaide.edu.au/degree-finder/2024/bcmsa_bcmpscadv.html','3',1);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +69,7 @@ CREATE TABLE `course_stream` (
 
 LOCK TABLES `course_stream` WRITE;
 /*!40000 ALTER TABLE `course_stream` DISABLE KEYS */;
-INSERT INTO `course_stream` VALUES (10,'APP MTH'),(6,'COLL'),(1,'COMP SCI'),(3,'ENG'),(4,'ENTREP'),(2,'MATHS'),(8,'PHIL'),(7,'PROJMGNT'),(9,'STATS'),(5,'TECH');
+INSERT INTO `course_stream` VALUES (10,'APP DATA'),(9,'APP MTH'),(5,'COLL'),(0,'COMP SCI'),(2,'ENG'),(3,'ENTREP'),(1,'MATHS'),(7,'PHIL'),(6,'PROJMGNT'),(8,'STATS'),(4,'TECH');
 /*!40000 ALTER TABLE `course_stream` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `degree` (
   PRIMARY KEY (`degree_id`),
   KEY `fk_degree_1_idx` (`level`),
   CONSTRAINT `fk_degree_1` FOREIGN KEY (`level`) REFERENCES `degree_level` (`level`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `degree` (
 
 LOCK TABLES `degree` WRITE;
 /*!40000 ALTER TABLE `degree` DISABLE KEYS */;
-INSERT INTO `degree` VALUES (1,'Computer Science (Advanced)',1),(2,'Information Technology',1),(3,'Technology (Defence Industries)',1),(4,'Artificial Intelligence and Machine Learning',2),(5,'Computer Science',2),(6,'Computing and Innovation',2),(7,'Cyber Security',2),(8,'Data Science',2),(9,'Data Science',0),(10,'Technology (Defence Industries)',0);
+INSERT INTO `degree` VALUES (0,'Computer Science (Advanced)',1),(1,'Information Technology',1),(2,'Technology (Defence Industries)',1),(3,'Artificial Intelligence and Machine Learning',2),(4,'Computer Science',2),(5,'Computing and Innovation',2),(6,'Cyber Security',2),(7,'Data Science',2),(8,'Data Science',0),(9,'Technology (Defence Industries)',0);
 /*!40000 ALTER TABLE `degree` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +124,7 @@ CREATE TABLE `degree_course` (
 
 LOCK TABLES `degree_course` WRITE;
 /*!40000 ALTER TABLE `degree_course` DISABLE KEYS */;
-INSERT INTO `degree_course` VALUES (1,2,1);
+INSERT INTO `degree_course` VALUES (0,2,1);
 /*!40000 ALTER TABLE `degree_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +169,7 @@ CREATE TABLE `incompatiable` (
   KEY `fk_incompatiable_2_idx` (`target_course_id`),
   CONSTRAINT `fk_incompatiable_1` FOREIGN KEY (`src_course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_incompatiable_2` FOREIGN KEY (`target_course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +178,7 @@ CREATE TABLE `incompatiable` (
 
 LOCK TABLES `incompatiable` WRITE;
 /*!40000 ALTER TABLE `incompatiable` DISABLE KEYS */;
-INSERT INTO `incompatiable` VALUES (1,4,5),(2,5,4),(7,2,4),(8,2,5),(9,4,2),(10,4,5);
+INSERT INTO `incompatiable` VALUES (2,2,4),(4,4,2);
 /*!40000 ALTER TABLE `incompatiable` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,7 +225,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`),
   UNIQUE KEY `username_UNIQUE` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,12 +234,9 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'a1234567@adelaide.edu.au','$2b$10$VOY0wpWif8Yzc5J5tOif8.U.OQp/Sk5SpfM1XOzmzmoxEN8qQhCMC');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping routines for database 'adelaide_dev'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -250,4 +247,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-20 17:15:07
+-- Dump completed on 2023-09-24 10:30:41
