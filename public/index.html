@@ -4,124 +4,137 @@
     <title>Project8 Curriculum mapping tool</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="/javascripts/main.js" defer></script>
-    <link rel="icon" type="image/x-icon" href="images/icons8-study-64.png">
-    <script src="https://unpkg.com/vue@3"></script>
-
+    <script src="/javascripts/frontpage.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="img\icons8-study-64.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div id="mainDiv">
-        <div id ="Header">
-            <a href="/">Curriculum Helper</a>
-            <button id="theme_change">
-                <a href="#"> Theme Change</a>
-            </button>
-        </div>
-        <nav class="nav_bar">
-            <a class="nav_unit" href="#">PlaceHolder1</a>
-            <a class="nav_unit" href="#">PlaceHolder2</a>
-            <a class="nav_unit" href="#">PlaceHolder3</a>
-            <a class="nav_unit" href="#">PlaceHolder4</a>
-            <button id="btnLogin" class="button_login" @click="doLogin()">
-                <div class="button_login"> Login </div>
-            </button>
-        </nav>
 
-        <div id="main_part">
-            <div id="detailed_part">
-                <div class="head_1">
-                    <div class="left_1">
-                        <div class="title_slogan">
-                        
-                            <div class="title_1">
-                                <div class="make_start_world">
-                                Make your coordination easier
-                                </div>
+    <nav class="navbar navbar-expand-lg bg-warning">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Curriculum Helper</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button><button type="button" class="btn btn-primary theme_change">Theme Change</button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex " role="search">
+            
+          </form>
+        </div>
+      </div>
+      </nav>
     
+      <div id="main_part">
+        <div id="detailed_part">
+            <div class="head_1">
+                <div class="left_1">
+                    <div class="title_slogan">
+                        
+                        <div class="title_1">
+                            <div class="make_start_world">
+                            Make your coordination easier
                             </div>
+    
+                        </div>
                             
-                            <div class="slogaan">
-                                <div class="slogaan-1">
-                                    Browse degree structure and course relationships with just one click.
+                        <div class="slogaan">
+                            <div class="slogaan-1">
+                                Browse degree structure and course relationships with just one click.
+                            </div>
+                        </div>
+                    
+                        <div class="search_bar">
+                            <div class="search_box">
+                                <div class="search_icon">
+                                    <img class="search_icom_1" src="img/search-icon@2x.png">
+                                </div class=" col-sm-12">
+                                <input id ="search-value" type="text" name = "searching_value" placeholder="Course Name Or Course Number" >                          
+                                </div>
+                                
+                                <div id = "widget_wrapper">
+                                    <div class="drop_down">
+                                        <div class="select_mdc" data-id="anima-widget">
+                                            <div class="select_anchor" role="button" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-disabled="false">
+                                                <select id="demo-label" name="cars" id="cars" class="a1 ">
+                                                    <option value="All_categories" >All categories</option>
+                                                    <option value="get_Degrees" >Degrees</option>
+                                                    <option value="get_courses" >courses</option>
+                                                  </select>                     
+                                            </div>
+                                    </div>
                                 </div>
                             </div>
-                    
-                            <div class="search_bar">
-                                <div class="search_box">
-                                    <div class="search_icon">
-                                        <img class="search_icom_1" src="images/search-icon@2x.png">
-                                    </div>
-                                    <input v-model="searchQuery" type="text" placeholder="Course Name Or Course Number" id="searchInput">                          
-                                    </div>
-                                
-                                    <div id = "widget_wrapper">
-                                        <div class="drop_down">
-                                            <div class="select_mdc" data-id="anima-widget">
-                                                <div class="select_anchor" role="button" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-disabled="false">
-                                                    <select id="demo-label" name="cars" id="cars" class="a1">
-                                                        <option value="All_categories">All categories</option>
-                                                        <option value="get_Degrees">Degrees</option>
-                                                        <option value="get_courses">courses</option>
-                                                    </select>                     
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button id="btnSearch" class="button_search" @click="doSearching()">
-                                    <div class="inside_search_button"> Search </div>
-                                    </button>
-                            </div>
+                            <button id="btnSearch" class="button_search" onclick="doSearching()">
+                                <div class="inside_search_button"> Search </div>
+                                </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-        <div id="background_two_buttons">
-                <div class="toggle-buttons">
-                    <button @click="toggleDisplay('degree')" :class="{ selected: displayDegree }">Degree</button>
-                    <button @click="toggleDisplay('course')" :class="{ selected: displayCourse }">Course</button>
-                </div>
-        
-                <div id="add_degree" v-if="displayDegree">
-                    <a target="_blank" href="add-new-degree.html"> + Add new degree</a>
-                </div>
-                <div id="add_course" v-if="displayCourse">
-                    <a target="_blank" href="add-new-course.html"> + Add new course</a>
-                </div>
-        </div>
-
-        <div class="placeholder_div">
-            
-            <ul class="degree-list" v-if="displayDegree">
-                <li v-for="degree in degree" class="degree-item">
-                  <div class="degree-box">
-                    <div class="degree-name">{{ degree.name }}</div>
-                    <div>{{ level[degree.level].level_type }} {{ level[degree.level].level_prefix }} {{ degree.name_suffix }}</div>
-                  </div>
-                </li>
-            </ul>
-            <ul class="degree-list" id="course-list" v-if="displayCourse">
-                <li v-for="course in course" class="degree-item">
-                    <div class="degree-box">
-                        <div>{{ stream[course.stream_id].stream_name }} {{ course.course_code }}</div>
-                        <div class="course-name">{{ course.course_name }}</div>
-                        <div>Units: {{ course.units }}</div>
-                        <div>Availability: {{ term[course.term].s }}</div>
-                    </div>
-                </li>
-            </ul>
-              
-            <p v-if="errorMessage" style="color: red;">{{ errorMessage }}</p>
-        </div>
-    
- 
-        <footer class="footer">
-                <p class="footer-text">© Team8 2023 All rights reserved</p>
-        </footer>
     </div>
+
+
+
+    <div id="background_two_buttons">
+            <button class="sub_button_format col-xxl-1 col-xl-3 col-lg-5 col-md-7 col-sm-11 col-12 btn btn-secondary"> Degree </button>
+            <button class="sub_button_format col-xxl-1 col-xl-3 col-lg-5 col-md-7 col-sm-11 col-12 btn btn-secondary"> Course </button>
+        
+          <div id="add_degree" v-if="displayDegree">
+              <a href="add-new-degree.html" target="_blank" class="add_attributes"> + Add new degree</a>
+          </div>
+          <div id="add_course" v-if="displayCourse">
+              <a href="add-new-course.html" target="_blank" class="add_attributes"> + Add new course</a>
+          </div>
+        </div>
+
+    <div class="placeholder_div">
+      <ul class="degree-list" v-if="displayDegree">
+        <li v-for="degree in degree" class="degree-item">
+          <div class="degree-box">
+            <div class="degree-name">{{ degree.name }}</div>
+            <div>{{ level[degree.level].level_type }} {{ level[degree.level].level_prefix }} {{ degree.name_suffix }}</div>
+          </div>
+        </li>
+    </ul>
+    <ul class="degree-list" id="course-list" v-if="displayCourse">
+        <li v-for="course in course" class="degree-item">
+            <div class="degree-box">
+                <div>{{ stream[course.stream_id].stream_name }} {{ course.course_code }}</div>
+                <div class="course-name">{{ course.course_name }}</div>
+                <div>Units: {{ course.units }}</div>
+                <div>Availability: {{ term[course.term].s }}</div>
+            </div>
+        </li>
+    </ul>
+      
+    <p v-if="errorMessage" style="color: red;">{{ errorMessage }}</p>
+        
+    </div>
+ 
+    <footer class="footer">
+            <p class="footer-text">© Team8 2023 All rights reserved</p>
+    </footer>
 </body>
 </html>
