@@ -102,6 +102,7 @@ router.post('/addNewCourse', (req, res) => {
   let {degree_id, type, stream_id, course_code, course_name, courselink_href, units, terms} = req.body;
   if (isNaN(degree_id) || isNaN(type) || isNaN(stream_id) || isNaN(units) || isNaN(terms)) {
     res.sendStatus(400);
+    return;
   }
   let query = "INSERT INTO course (stream_id, course_code, course_name, courselink_href, units, term) VALUES (?,?,?,?,?,?)";
   let sanCourseName = sanitizeHtml(course_name);
