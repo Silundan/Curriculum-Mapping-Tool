@@ -110,19 +110,14 @@ router.post('/addNewCourse', (req, res) => {
 
   req.pool.query(query, [stream_id, sanitizeHtml(course_code), course_name, sanitizeHtml(courselink_href), units, terms], (error, results) => {
     if (error) {
-      console.log(error.message);
       res.status(500).json({ error: error.message });
       return;
     }
-    console.log(results.insertId);
     new_course_id = results.insertId;
-    console.log(new_course_id);
     
     query = "INSERT INTO degree_course (degree_id, course_id, type) VALUES (?,?,?)";
-    console.log(new_course_id);
     req.pool.query(query, [degree_id, new_course_id, type], (error, results, next) => {
       if (error) {
-        console.log(error.message);
         res.status(500).json({ error: error.message });
         return;
       }
