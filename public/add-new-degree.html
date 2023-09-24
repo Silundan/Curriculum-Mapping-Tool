@@ -28,21 +28,33 @@
                                 <input type="text" id="degree_name"><br>
                     <!-- Bachelor, Master and Undergraduate radio buttons -->
                         <label>
-                                <input type="radio" id="bachelor" value="Bachelor" name="degree_id" checked><label for="bachelor">Bachelor</label><br>
+                                <!--<input type="radio" id="bachelor" value="Bachelor" name="degree_id" checked><label for="bachelor">Bachelor</label><br>
                                 <input type="radio" id="undergraduate" name="degree_id" value="Undergraduate"><label for="undergraduate">Undergraduate</label><br>
-                                <input type="radio" id="master" name="degree_id" value="Master"><label for="master">Master</label><br>
+                                <input type="radio" id="master" name="degree_id" value="Master"><label for="master">Master</label><br> -->
+                                <select name="degree_title">
+                                    <option value="bachelor">Bachelor</option>
+                                    <option value="undergraduate">Undergraduate</option>
+                                    <option value="master">Master</option>
+                                </select>
                         </label><br>
-                        <!-- Core -->
+                        <!-- Core 
                             <label for="degree_type">Degree Type: </label><br>
                             <input type="radio" id="core" name="degree_type" value="core" checked>
-                            <label for="core">Core</label><br>
-                        <!-- Elective -->
+                            <label for="core">Core</label><br>-->
+                        <!-- Elective 
                             <input type="radio" id="elective" name="degree_type" value="elective">
-                        <label for="elective">Elective</label><br>
-                        <!-- Project -->
+                        <label for="elective">Elective</label><br>-->
+                        <!-- Project 
                             <input type="radio" id="project" name="degree_type" value="project">
-                            <label for="project">Project</label><br>
-                        <button type="button" onclick="addNewDegree()">Confirm</button>
+                            <label for="project">Project</label><br>-->
+                            <select name="degree_type">
+                                <option value="core">Core</option>
+                                <option value="elective">Elective</option>
+                                <option value="project">Project</option>
+                            </select><br>
+                            <hr>
+                        <button type="button" onclick="addNewDegree()">Confirm</button><br>
+                        <button type="reset">Reset</button>
                     </div>
                 </div>
             </div>
