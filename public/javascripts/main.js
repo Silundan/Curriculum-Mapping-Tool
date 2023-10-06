@@ -108,5 +108,11 @@ const vuectrl = Vue.createApp({
 
 vuectrl.dataUpdate();
 
+function keepAlive() {
+    setInterval(vuectrl.dataUpdate, 60000); // ms
+    console.log("Auto reloaded.");
 
+}
+
+keepAlive();
 
