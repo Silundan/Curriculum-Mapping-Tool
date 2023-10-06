@@ -26,6 +26,13 @@ const vuectrl = Vue.createApp({
             },
             pre_requisites: [],
             incompatibles: [],
+            matchedCourses: [], 
+            studyPlan: {
+                1: { 1: [], 2: [] },
+                2: { 1: [], 2: [] },
+                3: { 1: [], 2: [] }
+            },
+            
             errorMessage: null,
             displayDegree: true,
             displayCourse: false
@@ -74,6 +81,33 @@ const vuectrl = Vue.createApp({
                 } else {
                     alert("Please enter a search.");
                 }
+        },
+        searchCourses() {
+            console.log("Search method called");
+            const searchQuery = this.searchQuery.trim();
+            if (searchQuery) {
+                
+                const apiUrl = `/api/courses?keyword=${searchQuery}`;
+                
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.matchedCourses = data || [];
+                    })
+                    .catch(error => {
+                        console.error("Error fetching search results:", error);
+                    });
+            } else {
+                alert("search course here。");
+            }
+        },
+        
+        addToPlan(course) {
+            if (!this.studyPlan.some(c => c.code === course.code)) {
+                this.studyPlan.push(course);
+            } else {
+                alert('add success。');
+            }
         },
         
         doLogin() {
