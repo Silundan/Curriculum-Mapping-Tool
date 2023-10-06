@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Plan Sandbox</title>
+    <link rel="stylesheet" type="text/css" href="./css/sandbox.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./javascripts/main.js" defer></script>
+</head>
+
+<body>
+    <div id="mainDiv">
+        <h1>Study Plan Sandbox</h1>
+
+        <div>
+            <input v-model="searchQuery" placeholder="Search for courses">
+
+            <button @click="searchCourses">Search</button>
+        </div>
+
+        <div class="placeholder_div">
+            <ul class="course-list" v-if="matchedCourses.length">
+                <li v-for="course in matchedCourses" :key="course.code" class="course-item">
+                    <div class="course-box">
+                        <div class="course-code">{{ course.course_code }}</div>
+                        <div class="course-name">{{ course.course_name }}</div>
+                        <button @click="addToPlan(course)">Add to Plan</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <h2>Your Study Plan</h2>
+        <div class="study-plan">
+            <div v-for="year in 3" class="year" :key="year">
+                <h3>Year {{ year }}</h3>
+                <div v-for="term in 2" class="term" :key="term">
+                    <h4>Term {{ term }}</h4>
+                    <ul>
+                        <li v-for="course in studyPlan[year][term]" :key="course.code">
+                            {{ course.code }}: {{ course.name }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
