@@ -26,27 +26,20 @@
                         <div class="center content">
                             <label for="degree_name">Degree Name: </label>
                                 <input type="text" id="degree_name"><br>
-                    <!-- Bachelor, Master and Undergraduate radio buttons -->
+                            <label for="course_name">Course Name: </label><br>
+                            <select name="course_name" id="course_name">
+                                <template v-for="course in course">
+                                    <option :value="course.c" v-if="course.c > 0"> {{course.s}}</option>
+                                </template>
+                            </select>
+                    <!-- Bachelor, Master and Undergraduate dropdown list -->
                         <label>
-                                <!--<input type="radio" id="bachelor" value="Bachelor" name="degree_id" checked><label for="bachelor">Bachelor</label><br>
-                                <input type="radio" id="undergraduate" name="degree_id" value="Undergraduate"><label for="undergraduate">Undergraduate</label><br>
-                                <input type="radio" id="master" name="degree_id" value="Master"><label for="master">Master</label><br> -->
                                 <select name="degree_title">
                                     <option value="bachelor">Bachelor</option>
                                     <option value="undergraduate">Undergraduate</option>
                                     <option value="master">Master</option>
                                 </select>
                         </label><br>
-                        <!-- Core 
-                            <label for="degree_type">Degree Type: </label><br>
-                            <input type="radio" id="core" name="degree_type" value="core" checked>
-                            <label for="core">Core</label><br>-->
-                        <!-- Elective 
-                            <input type="radio" id="elective" name="degree_type" value="elective">
-                        <label for="elective">Elective</label><br>-->
-                        <!-- Project 
-                            <input type="radio" id="project" name="degree_type" value="project">
-                            <label for="project">Project</label><br>-->
                             <select name="degree_type">
                                 <option value="core">Core</option>
                                 <option value="elective">Elective</option>
