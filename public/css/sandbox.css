@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+#app {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3, h4 {
+    margin-top: 0;
+}
+
+h2 {
+    border-bottom: 2px solid #e5e5e5;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.placeholder_div {
+    margin: 20px 0;
+}
+
+.course-list, .study-plan {
+    list-style-type: none;
+    padding: 0;
+}
+
+.course-item, .year, .term {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+}
+
+.course-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-code, .course-name {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.year {
+    margin-bottom: 30px;
+}
+
+.term h4 {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.study-plan ul {
+    list-style-type: none;
+    padding: 0;
+}
+
