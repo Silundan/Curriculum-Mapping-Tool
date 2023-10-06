@@ -15,7 +15,17 @@ router.get('/courses', (req, res) => {
         // res.status(401).send('Authentication required.');
     }
      */
-    req.pool.query('SELECT * FROM course', (err, results) => {
+    const keyword = req.query.keyword || '';
+
+    let query = 'SELECT * FROM course';
+    let queryParams = [];
+
+    if (keyword) {
+        query += ' WHERE course_name LIKE ?';  
+        queryParams.push('%' + keyword + '%');
+    }
+
+    req.pool.query(query, queryParams, (err, results) => {
         if (err) {
             res.status(500).json({ error: err.message });
         } else {
