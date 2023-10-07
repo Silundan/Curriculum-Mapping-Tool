@@ -60,6 +60,11 @@
     border-radius: 5px;
 }
 
+.popup {
+    border: none;
+    background-size: 10vh;
+    padding: 0.5cm;
+}
 
 html body {
     /* background-color: #E8f0f2; */
