@@ -1,6 +1,8 @@
 // TODO:
 // Impliment degree courses, pre_requisites, incompatibles
 // free to use the arrays in vue for form input
+const MAX_COURSES_PER_TERM = 5;
+
 
 const vuectrl = Vue.createApp({
     data() {
@@ -28,14 +30,16 @@ const vuectrl = Vue.createApp({
             incompatibles: [],
             matchedCourses: [], 
             studyPlan: {
-                1: { 1: [], 2: [] },
-                2: { 1: [], 2: [] },
-                3: { 1: [], 2: [] }
+                1: { 1: [], 2: [], 3: []},
+                2: { 1: [], 2: [], 3: []},
+                3: { 1: [], 2: [], 3: []}
             },
             
             errorMessage: null,
             displayDegree: true,
-            displayCourse: false
+            displayCourse: false,
+            selectedYear: 1,
+            selectedTerm: 1
         };
     },
     methods: {
@@ -54,34 +58,45 @@ const vuectrl = Vue.createApp({
             const searchScope = document.getElementById("demo-label").value;
             if (searchQuery) {
                 let apiUrl = ''; 
-    
+        
                 switch (searchScope) {
                     case 'get_courses':
-                        apiUrl = `/api/search?course-name=${searchQuery}`;
+                        apiUrl = `/api/courses?keyword=${searchQuery}`;
                         break;
                     case 'get_Degrees':
-                        apiUrl = `/api/search?degree-name=${searchQuery}`;
+                        apiUrl = `/api/search?degree-name=${searchQuery}`;  
                         break;
                     default:
-                        apiUrl = `/api/search?all-categories=${searchQuery}`;
+                        apiUrl = `/api/search?all-categories=${searchQuery}`;  
                         break;
                 }
-    
-            
+        
                 fetch(apiUrl)
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                        }
+                        return response.json();
+                    })
                     .then(data => {
-                    
-                        this.course = data.courses;
-                        this.degree = data.degrees;
+                        if (searchScope === 'get_courses') {
+                            this.course = data;  
+                        } else if (searchScope === 'get_Degrees') {
+                            this.degree = data.degrees; 
+                        } else {
+                            
+                            this.course = data.courses;  
+                            this.degree = data.degrees;  
+                        }
                     })
                     .catch(error => {
                         console.error("Error fetching search results:", error);
                     });
-                } else {
-                    alert("Please enter a search.");
-                }
+            } else {
+                alert("Please enter a search.");
+            }
         },
+        
         searchCourses() {
             console.log("Search method called");
             const searchQuery = this.searchQuery.trim();
@@ -102,18 +117,80 @@ const vuectrl = Vue.createApp({
             }
         },
         
-        addToPlan(course) {
-            if (!this.studyPlan.some(c => c.code === course.code)) {
-                this.studyPlan.push(course);
+
+        addToPlan() {
+            let coursesAlreadyInPlan = [];
+            if (!this.selectedYear || !this.selectedTerm) {
+                alert('Please select a year, term and courses.');
+                return;
+            }
+            
+            const selectedCourses = this.matchedCourses.filter(course => course.selected);
+            
+            if (!selectedCourses.length) {
+                alert('Please select courses to add to the study plan.');
+                return;
+            }
+        
+            const targetTermCourses = this.studyPlan[this.selectedYear][this.selectedTerm];
+        
+            selectedCourses.forEach(course => {
+                if (targetTermCourses.length < MAX_COURSES_PER_TERM) {
+                    
+                    if (!targetTermCourses.some(c => c.course_code === course.course_code)) {
+                        targetTermCourses.push({
+                            course_code: course.course_code,
+                            course_name: course.course_name,
+                        });
+                    } else {
+                        coursesAlreadyInPlan.push(course.course_code);
+                    }
+                } else {
+                    alert(`Study plan is full for Year ${this.selectedYear}, Term ${this.selectedTerm}. Not all courses added.`);
+                    return;
+                }
+            });
+        
+            if (coursesAlreadyInPlan.length > 0) {
+                alert('Courses ' + coursesAlreadyInPlan.join(', ') + ' are already in Year ' + this.selectedYear + ', Term ' + this.selectedTerm + '.');
             } else {
-                alert('add success。');
+                alert(`Courses added to Year ${this.selectedYear}, Term ${this.selectedTerm}.`);
             }
         },
+        downloadPDF() {
+            console.log("Download button clicked");
+            const { jsPDF } = window.jspdf;
+            const mainDiv = document.querySelector(".study-plan");
+         
+        
+            html2canvas(mainDiv, {
+                scale: 2,  
+                useCORS: true,  
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                
+
+                const pdf = new jsPDF({
+                    orientation: "portrait",
+                    unit: "mm",
+                    format: "a4"
+                });
+        
+                const imgProps= pdf.getImageProperties(imgData);
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                pdf.save('study_plan.pdf');
+            });
+        },
+
         
         doLogin() {
             console.log("login...");
             window.location.href = "login.html";
         },
+        
+        
         dataUpdate(){
             vuectrl.fetchData("/api/course_streams", "stream");
             vuectrl.fetchData("/api/degree_levels", "level");
@@ -147,6 +224,8 @@ function keepAlive() {
     console.log("Auto reloaded.");
 
 }
+
+
 
 keepAlive();
 
