@@ -104,10 +104,20 @@
             <button class="sub_button_format col-xxl-1 col-xl-3 col-lg-5 col-md-7 col-sm-11 col-12 btn btn-secondary" @click="toggleDisplay('course')" :class="{ selected: displayCourse }"> Course </button>
         
           <div id="add_degree" v-if="displayDegree">
-              <a href="add-new-degree.html" target="_blank" class="add_attributes"> + Add new degree</a><!-- POP UP WINDOW BUTTON -->
+              <button href="add-new-degree.html" target="_blank" class="add_attributes"> + Add new degree</button><!-- POP UP WINDOW BUTTON -->
+              <script>
+              $( "displayDegree" ).dialog({ autoOpen: false });
+                $( "add_degree" ).click(function() {
+                  $( "displayDegree" ).dialog( "open" );
+                });</script>
           </div>
           <div id="add_course" v-if="displayCourse">
-              <a href="add-new-course.html" target="_blank" class="add_attributes"> + Add new course</a><!-- POP UP WINDOW BUTTON -->
+              <button href="add-new-course.html" target="_blank" class="add_attributes"> + Add new course</button><!-- POP UP WINDOW BUTTON -->
+              <script>
+              $( "displayCourse" ).dialog({ autoOpen: false });
+                $( "add_course" ).click(function() {
+                  $( "displayCourse" ).dialog( "open" );
+                });</script>
           </div>
         </div>
 
@@ -138,7 +148,6 @@
     <footer class="footer">
             <p class="footer-text">© Team8 2023 All rights reserved</p>
     </footer>
-
   </div>
 </body>
 </html>

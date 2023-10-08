@@ -178,6 +178,8 @@ html, body {
     height: 74px;
     overflow: hidden;
     box-sizing: border-box;
+    padding-right: 12px;
+    padding-left: 1px;
     width: 447px;
 }
 
@@ -195,6 +197,7 @@ html, body {
     width: 22px;
     height: 24px;
     align-items: center;
+    
 }
 
 input{
@@ -229,7 +232,6 @@ input{
     position: relative;
     box-sizing: border-box;
 }
-
 
 .a1{
     height: 3rem;
@@ -291,14 +293,14 @@ input{
     margin-bottom: 0%;
 }
 .footer-text{
-color: black;
-font-family: var(--font-family-blinker);
-font-size: 1.2rem;
-font-weight: 300;
-letter-spacing: 0;
-line-height: 19.6px;
-text-align: center;
-white-space: nowrap;
+    color: black;
+    font-family: var(--font-family-blinker);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 19.6px;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .placeholder_div{
