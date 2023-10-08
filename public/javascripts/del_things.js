@@ -21,6 +21,7 @@ function doAJAX(container, target_loc) {
 
 function deleteCourse() {
     let course_id = document.getElementById('course_id').value;
-    let container = {course_id};
+    let stream_id = document.getElementById('stream_id').value;
+    let container = {course_id, stream_id};
     doAJAX(container, "/users/deleteCourse");
 }
