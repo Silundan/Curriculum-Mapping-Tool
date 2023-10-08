@@ -17,12 +17,24 @@ router.get('/courses', (req, res) => {
      */
     const keyword = req.query.keyword || '';
 
-    let query = 'SELECT * FROM course';
+    let conditions = [];
     let queryParams = [];
-
+    
     if (keyword) {
-        query += ' WHERE course_name LIKE ?';  
-        queryParams.push('%' + keyword + '%');
+        const keywords = keyword.split(' ').filter(word => word.trim() !== ""); 
+        
+        for(let word of keywords) {
+            conditions.push('course_name LIKE ?');
+            queryParams.push('%' + word + '%');
+            
+            conditions.push('course_code LIKE ?');
+            queryParams.push('%' + word + '%');
+        }
+    }
+
+    let query = 'SELECT * FROM course';
+    if (conditions.length > 0) {
+        query += ' WHERE ' + conditions.join(' OR ');
     }
 
     req.pool.query(query, queryParams, (err, results) => {
