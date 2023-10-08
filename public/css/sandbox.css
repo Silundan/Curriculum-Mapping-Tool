@@ -1,45 +1,49 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #eef2f7;
+    color: #333;
 }
 
 #app {
     max-width: 800px;
-    margin: 20px auto;
+    margin: 40px auto;
     padding: 20px;
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
 }
 
 h1, h2, h3, h4 {
-    margin-top: 0;
+    margin: 0;
+    padding: 0;
+    color: #555;
 }
 
 h2 {
-    border-bottom: 2px solid #e5e5e5;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    border-bottom: 3px solid #e5e5e5;
+    padding-bottom: 15px;
+    margin: 20px 0;
 }
 
 button {
-    padding: 5px 10px;
+    padding: 8px 16px;
     margin: 10px 0;
     cursor: pointer;
     background-color: #007BFF;
     color: white;
     border: none;
-    border-radius: 4px;
-    transition: background-color 0.2s;
+    border-radius: 6px;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
-.placeholder_div {
+.placeholder_div, .study-plan {
     margin: 20px 0;
 }
 
@@ -51,19 +55,27 @@ button:hover {
 .course-item, .year, .term {
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #e5e5e5;
-    border-radius: 5px;
+    border: 1px solid #d6dce2;
+    border-radius: 8px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.course-item:hover, .year:hover, .term:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
 }
 
 .course-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: row;
 }
 
 .course-code, .course-name {
     font-weight: bold;
     margin-right: 10px;
+    margin: 0; 
 }
 
 .year {
@@ -75,8 +87,32 @@ button:hover {
     font-weight: bold;
 }
 
-.study-plan ul {
-    list-style-type: none;
-    padding: 0;
+.course-result-container {
+    margin-top: 20px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 20px;
 }
+
+.course-details {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+}
+.download-pdf-btn {
+    padding: 5px 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.download-pdf-btn:hover {
+    background-color: #0056b3;
+}
+
 
