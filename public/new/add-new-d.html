@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-3 shadow">
+          <div class="modal-body p-4 text-center">
+            <div class="center container popup popupbox">
+              <form>
+                  <div class="center content popup popupbox">
+                     <!-- Text field -->
+                      <div class="center content">
+                          <label for="degree_name">Degree Name: </label>
+                              <input type="text" id="degree_name"><br>
+                          <label for="course_name">Course Name: </label><br>
+                  <!-- Bachelor, Master and Undergraduate dropdown list -->
+                      <label>
+                              <select name="degree_title">
+                                  <option value="bachelor">Bachelor</option>
+                                  <option value="undergraduate">Undergraduate</option>
+                                  <option value="master">Master</option>
+                              </select>
+
+                          <select name="degree_type">
+                              <option value="core">Core</option>
+                              <option value="elective">Elective</option>
+                              <option value="project">Project</option>
+                          </select><br>
+                        </label><br>
+                  </div>
+              </div>
+          </div>
+          </div>
+          <div class="modal-footer flex-nowrap p-0">
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" onclick="addNewDegree()"><strong>Confirm</strong></button>
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
