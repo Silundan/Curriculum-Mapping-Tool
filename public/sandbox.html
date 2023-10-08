@@ -7,7 +7,10 @@
     <title>Study Plan Sandbox</title>
     <link rel="stylesheet" type="text/css" href="./css/sandbox.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js""></script>
     <script src="./javascripts/main.js" defer></script>
+ 
 </head>
 
 <body>
@@ -20,32 +23,51 @@
             <button @click="searchCourses">Search</button>
         </div>
 
-        <div class="placeholder_div">
+        <div class="course-result-container"> 
             <ul class="course-list" v-if="matchedCourses.length">
-                <li v-for="course in matchedCourses" :key="course.code" class="course-item">
-                    <div class="course-box">
-                        <div class="course-code">{{ course.course_code }}</div>
-                        <div class="course-name">{{ course.course_name }}</div>
-                        <button @click="addToPlan(course)">Add to Plan</button>
+                <li v-for="course in matchedCourses" :key="course.code">
+                    <div class="course-item"> 
+                        <div class="course-box">
+                            <input type="checkbox" v-model="course.selected">
+                            <div class="course-details">
+                                <div class="course-code">{{ course.course_code }}</div>
+                                <div class="course-name">{{ course.course_name }}</div>
+                            </div>
+                        </div>
                     </div>
                 </li>
             </ul>
         </div>
-
+        <div>
+            <select v-model="selectedYear">
+                <option value="null" disabled>Select Year</option>
+                <option v-for="year in 3" :value="year">Year {{ year }}</option>
+            </select>
+        
+            <select v-model="selectedTerm">
+                <option value="null" disabled>Select Term</option>
+                <option v-for="term in 3" :value="term">Term {{ term }}</option>
+            </select>
+            
+            <button @click="addToPlan">Add to Plan</button>
+        </div>
+        
         <h2>Your Study Plan</h2>
         <div class="study-plan">
             <div v-for="year in 3" class="year" :key="year">
                 <h3>Year {{ year }}</h3>
-                <div v-for="term in 2" class="term" :key="term">
+                <div v-for="term in 3" class="term" :key="term">
                     <h4>Term {{ term }}</h4>
                     <ul>
                         <li v-for="course in studyPlan[year][term]" :key="course.code">
-                            {{ course.code }}: {{ course.name }}
+                            {{ course.course_code }}: {{ course.course_name }}
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
+        <button class="download-pdf-btn" @click="downloadPDF">Download PDF</button>
     </div>
+
 </body>
 </html>
