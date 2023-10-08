@@ -20,8 +20,19 @@ function doAJAX(container, target_loc) {
 }
 
 function deleteCourse() {
-    let course_id = document.getElementById('course_id').value;
     let stream_id = document.getElementById('stream_id').value;
-    let container = {course_id, stream_id};
-    doAJAX(container, "/users/deleteCourse");
+    if (isNaN(stream_id) || stream_id < 0 || stream_id === null || stream_id === "") {
+        alert('Invalid stream!');
+        return;
+    }
+    let course_id = document.getElementById('course_id').value;
+    console.log(course_id);
+    if (isNaN(course_id) || course_id < 0 || course_id === null || course_id === "") {
+        alert('Invalid course!');
+        return;
+    }
+    if (confirm("Do you really want to delete:\n"+ vuectrl.stream[vuectrl.courseCode[course_id].stream_id].stream_name +" "+ vuectrl.courseCode[course_id].course_code+"\n"+vuectrl.courseCode[course_id].course_name +"?") === true) {
+        let container = {course_id, stream_id};
+        doAJAX(container, "/users/deleteCourse");
+    }
 }
