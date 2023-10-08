@@ -11,17 +11,24 @@
         <div id="mainDiv">
             <form>
                 <div class="center content">
-                    <label for="stream_id">Course stream: </label>
-                    <select name="stream" id="stream_id" v-model="sid">
-                        <option v-for="stream in stream" :value="stream.stream_id"> {{ stream.stream_name }}</option>
-                    </select><br><br>
+                    <div id="streamSelection">
+                        <label for="stream_id">Course stream: </label>
+                        <select name="stream" id="stream_id" v-model="sid" @change="formStreamChange()">
+                            <option :value="-1"> </option>
+                            <option v-for="stream in stream" :value="stream.stream_id"> {{ stream.stream_name }}</option>
+                        </select><br><br>
+                    </div>
 
-                    <label for="course_code">Course code: </label>
-                    <select name="code" id="course_code">
-                        <option v-for="course in course" :value="course.course_code" v-if="sid === course.stream_id"> {{ course.course_code }} {{ course.course_name }}</option>
-                    </select>
+                    <div id="courseSelection">
+                        <template v-if="sid !== -1">
+                            <label for="course_code">Course code and name: </label>
+                            <select name="course_id" id="course_id">
+                                <option v-for="courses in courseCode" :value="courses.course_id">{{ courses.course_code }} {{ courses.course_name }}</option>
+                            </select>
+                        </template>
+                    </div>
 
-
+                    <button type="button" onclick="deleteCourse()">DELETE course</button> 
                 </div>
             </form>
         </div>
