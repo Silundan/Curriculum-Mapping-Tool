@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="/javascripts/main.js" defer></script>
+        <script src="/javascripts/del_things.js"></script>
+        <meta charset="UTF-8">
+        <title>Delete Course</title>
+    </head>
+    <body>
+        <div id="mainDiv">
+            <form>
+                <div class="center content">
+                    <label for="stream_id">Course stream: </label>
+                    <select name="stream" id="stream_id" v-model="sid">
+                        <option v-for="stream in stream" :value="stream.stream_id"> {{ stream.stream_name }}</option>
+                    </select><br><br>
+
+                    <label for="course_code">Course code: </label>
+                    <select name="code" id="course_code">
+                        <option v-for="course in course" :value="course.course_code" v-if="sid === course.stream_id"> {{ course.course_code }} {{ course.course_name }}</option>
+                    </select>
+
+
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

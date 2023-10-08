@@ -33,7 +33,7 @@ function addNewCourse() {
     }
 
     // Adding course
-    let stream_id = document.getElementById('stream').value;
+    let stream_id = document.getElementById('stream_id').value;
     let course_code = document.getElementById('course_code').value;
     let course_name = document.getElementById('course_name').value;
     let courselink_href = document.getElementById('courselink_href').value;
@@ -71,7 +71,7 @@ function addNewDegree() {
         type2 += 4;
     }
     // Adding course
-    let stream_id = document.getElementById('stream').value;
+    let stream_id = document.getElementById('stream_id').value;
     //let degree_title = document.getElementById('degree_title').value;
     let degree_name = document.getElementById('course_name').value;
     //let courselink_href = document.getElementById('courselink_href').value;
