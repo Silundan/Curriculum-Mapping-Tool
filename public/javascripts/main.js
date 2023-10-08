@@ -15,7 +15,6 @@ const vuectrl = Vue.createApp({
             searchQuery: '',
             degree_course: [],
             type: ["core", "elective","core & elective", "project", "core & project", "elective & project", "core, elective & project"],
-            // term: ["", "Semester 1", "Semester 2", "All Semesters", "Trimester 1", "Trimester 2", "Trimester 3", "All Trimesters"],
             term: {
                 0: {t: 0, s: ""},
                 1: {t: 1, s: "Semester 1"},
@@ -34,12 +33,14 @@ const vuectrl = Vue.createApp({
                 2: { 1: [], 2: [], 3: []},
                 3: { 1: [], 2: [], 3: []}
             },
-            
             errorMessage: null,
             displayDegree: true,
             displayCourse: false,
             selectedYear: 1,
-            selectedTerm: 1
+            selectedTerm: 1,
+            sid: -1,
+            courseCode: [],
+            courseID: -1
         };
     },
     methods: {
@@ -52,7 +53,6 @@ const vuectrl = Vue.createApp({
                 this.displayCourse = true;
             }
         },
-        
         doSearching() {
             const searchQuery = this.searchQuery.trim(); 
             const searchScope = document.getElementById("demo-label").value;
@@ -157,6 +157,7 @@ const vuectrl = Vue.createApp({
                 alert(`Courses added to Year ${this.selectedYear}, Term ${this.selectedTerm}.`);
             }
         },
+
         downloadPDF() {
             console.log("Download button clicked");
             const { jsPDF } = window.jspdf;
@@ -200,6 +201,16 @@ const vuectrl = Vue.createApp({
             // vuectrl.fetchData("/api/pre_requisites", "pre_requisite");
             // vuectrl.fetchData("/api/incompatibles", "incompatibles");
         },
+
+        formStreamChange() {
+            vuectrl.courseCode.length = 0;
+            for (let i=0; i<vuectrl.course.length; i++) {
+                if (vuectrl.course[i].stream_id === vuectrl.sid) {
+                    vuectrl.courseCode.push(vuectrl.course[i]);
+                }
+            }
+        },
+
         fetchData(target_loc, dest_var){
             let req = new XMLHttpRequest();
             req.onreadystatechange = function () {

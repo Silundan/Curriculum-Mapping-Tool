@@ -138,4 +138,23 @@ router.post('/addNewCourse', (req, res) => {
 
 });
 
+router.post('/deleteCourse', (req, res) => {
+  let {course_id} = req.body;
+  console.log(course_id);
+  if (isNaN(course_id)) {
+    res.sendStatus(400);
+    return;
+  }
+  let query = "DELETE FROM course WHERE course_id = ?";
+
+  req.pool.query(query, [course_id], (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+      return;
+    }
+    res.sendStatus(200);
+    });
+  });
+
+
 module.exports = router;

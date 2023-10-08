@@ -19,10 +19,8 @@ function doAJAX(container, target_loc) {
     req.send(JSON.stringify(container));
 }
 
-function deleteInit() {
-    
-}
-
 function deleteCourse() {
-
+    let course_id = document.getElementById('course_id').value;
+    let container = {course_id};
+    doAJAX(container, "/users/deleteCourse");
 }
