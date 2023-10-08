@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./javascripts/main.js" defer></script>
+    <script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"></script>
     <link rel="icon" type="image/x-icon" href="./images/icons8-study-64.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -98,25 +99,25 @@
     </div>
 
 
-
+    
     <div id="background_two_buttons">
             <button class="sub_button_format col-xxl-1 col-xl-3 col-lg-5 col-md-7 col-sm-11 col-12 btn btn-secondary" @click="toggleDisplay('degree')" :class="{ selected: displayDegree }"> Degree </button>
             <button class="sub_button_format col-xxl-1 col-xl-3 col-lg-5 col-md-7 col-sm-11 col-12 btn btn-secondary" @click="toggleDisplay('course')" :class="{ selected: displayCourse }"> Course </button>
         
           <div id="add_degree" v-if="displayDegree">
-              <button href="add-new-degree.html" target="_blank" class="add_attributes"> + Add new degree</button><!-- POP UP WINDOW BUTTON -->
+              <button href="add-new-degree.html" target="_self" class="add_attributes" @click="popupWindowDeg()"> + Add new degree</button><!-- POP UP WINDOW BUTTON -->
               <script>
-              $( "displayDegree" ).dialog({ autoOpen: false });
-                $( "add_degree" ).click(function() {
-                  $( "displayDegree" ).dialog( "open" );
+              $( "$displayDegree" ).dialog({ autoOpen: false });
+                $( ".add_degree" ).click(function() {
+                  $( "$displayDegree" ).dialog( "open" );
                 });</script>
           </div>
           <div id="add_course" v-if="displayCourse">
-              <button href="add-new-course.html" target="_blank" class="add_attributes"> + Add new course</button><!-- POP UP WINDOW BUTTON -->
+              <button href="add-new-course.html" target="_self" class="add_attributes" @click="popupWindowCrs()"> + Add new course</button><!-- POP UP WINDOW BUTTON -->
               <script>
-              $( "displayCourse" ).dialog({ autoOpen: false });
-                $( "add_course" ).click(function() {
-                  $( "displayCourse" ).dialog( "open" );
+              $( "$displayCourse" ).dialog({ autoOpen: false });
+                $( ".add_course" ).click(function() {
+                  $( "$displayCourse" ).dialog( "open" );
                 });</script>
           </div>
         </div>

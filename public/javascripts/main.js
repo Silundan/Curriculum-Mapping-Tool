@@ -213,6 +213,27 @@ const vuectrl = Vue.createApp({
             };
             req.open("GET", target_loc);
             req.send();
+        },
+        popupWindowDeg() {
+            let popUp = open('add-new-degree.html', 'width=500,height=400')
+            popUp.focus();
+
+            //alert(popUp,location.href);
+
+            popUp.onload = function() {
+                popUp.document.body.insertAdjacentHTML('afterbegin', html);
+            }
+        },
+        popupWindowCrs() {
+            let popUp = open('add-new-course.html', 'width=500,height=400')
+            popUp.focus();
+
+            //alert(popUp,location.href);
+
+            popUp.onload = function() {
+               popUp.document.body.insertAdjacentHTML('afterbegin', html);
+                
+            }
         }
     }
 }).mount('#mainDiv');
