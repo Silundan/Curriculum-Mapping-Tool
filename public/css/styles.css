@@ -293,14 +293,14 @@ input{
     margin-bottom: 0%;
 }
 .footer-text{
-color: black;
-font-family: var(--font-family-blinker);
-font-size: 1.2rem;
-font-weight: 300;
-letter-spacing: 0;
-line-height: 19.6px;
-text-align: center;
-white-space: nowrap;
+    color: black;
+    font-family: var(--font-family-blinker);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 19.6px;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .placeholder_div{
