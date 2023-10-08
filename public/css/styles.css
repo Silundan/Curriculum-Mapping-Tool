@@ -178,6 +178,8 @@ html, body {
     height: 74px;
     overflow: hidden;
     box-sizing: border-box;
+    padding-right: 12px;
+    padding-left: 1px;
     width: 447px;
 }
 
@@ -195,6 +197,7 @@ html, body {
     width: 22px;
     height: 24px;
     align-items: center;
+    
 }
 
 input{
@@ -229,7 +232,6 @@ input{
     position: relative;
     box-sizing: border-box;
 }
-
 
 .a1{
     height: 3rem;
