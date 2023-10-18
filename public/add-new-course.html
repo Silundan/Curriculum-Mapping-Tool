@@ -5,6 +5,67 @@
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script src="/javascripts/main.js" defer></script>
         <script src="/javascripts/add_things.js"></script>
+        <style>
+        @import url("https://fonts.googleapis.com/css?family=Blinker:400,300,700,600");
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 50px;  
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;  
+        }
+
+        .center {
+            width: 80%;
+            margin: auto;
+        }
+
+        .content {
+            padding: 20px 40px;
+            border-radius: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+              
+            
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type=text], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 10px; 
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }       
+        </style>
         <meta charset="UTF-8">
         <title>Add New Course</title>
     </head>
@@ -13,7 +74,7 @@
             <!-- hyperlinks to other pages -->
             <div class="section modal-container header-content">
                 <!-- <a href="/">Home</a> -->
-                <a href="/index.html">Home</a>
+                
                 <a href="/add-course.html" target="_self">Add Course</a>
                 <a href="/add-new-degree.html" target="_self">Add New Degree</a>
                 <a href="/edit-course.html" target="_self">Edit Course</a>

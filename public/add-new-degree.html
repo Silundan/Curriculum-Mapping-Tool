@@ -1,56 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="../public/css/add-new-degree.css">
+        
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script src="javascripts/main.js" defer></script>
         <script src="javascripts/add_things.js"></script>
+        <style>
+        @import url("https://fonts.googleapis.com/css?family=Blinker:400,300,700,600");
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+
+        body {
+        font-family: 'Montserrat', sans-serif;
+        }
+
+        .center {
+            width: 80%;
+            margin: auto;
+        }
+
+        .container {
+            background-color: #fafafa;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .input[type=text] {
+            width: 100%;
+            display: inline-flex;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        .content {
+            
+            padding: 20px 40px;
+            border-radius: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            
+        }
+
+        .content button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .content button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            color: #555;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #Header {
+            align-items: center;
+            background-color: #eee;
+            display: flex;
+            height: 70px;
+            padding: 0 20px;
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between; 
+        }
+
+        .button-container button {
+            width: 48%; 
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;  
+        }
+
+
+        input, select, button {
+            margin-bottom: 15px;
+        }
+        </style>
         <meta charset="UTF-8">
         <title>Add New Degree</title>
     </head>
     <body>
         <div id="mainDiv">
             <!-- hyperlinks to other pages -->
-            <div class="section modal-container" id="Header">
+            <div class="section modal-container header-content">
                 <!-- <a href="/">Home</a> -->
-                <a href="/index.html">Home</a>
+                
                 <a href="/add-course.html" target="_self">Add Course</a>
                 <a href="/add-new-course.html" target="_self">Add New Course</a>
                 <a href="/edit-course.html" target="_self">Edit Course</a>
             </div><br>
             <!-- pop up -->
-            <div class="center container popup popupbox">
+
+            <div class="center">
                 <form>
-                    <div class="center content popup popupbox">
-                       <!-- Text field -->
-                        <div class="center content">
+                    <div class="content">
+                        <div class="form-group">
                             <label for="degree_name">Degree Name: </label>
-                                <input type="text" id="degree_name"><br>
-                            <label for="course_name">Course Name: </label><br>
-                            <select name="course_name" id="course_name">
-                                <template v-for="course in course">
-                                    <option :value="course.c" v-if="course.c > 0"> {{course.s}}</option>
-                                </template>
-                            </select>
-                    <!-- Bachelor, Master and Undergraduate dropdown list -->
-                        <label>
-                                <select name="degree_title">
-                                    <option value="bachelor">Bachelor</option>
-                                    <option value="undergraduate">Undergraduate</option>
-                                    <option value="master">Master</option>
-                                </select>
-                        </label><br>
-                            <select name="degree_type">
-                                <option value="core">Core</option>
-                                <option value="elective">Elective</option>
-                                <option value="project">Project</option>
-                            </select><br>
-                            <hr>
-                        <button type="button" onclick="addNewDegree()">Confirm</button><br>
+                            <input type="text" id="degree_name">
+                        </div>
+                    <div class="form-group">
+                        <label for="course_name">Course Name: </label>
+                        <select name="course_name" id="course_name">
+                            <template v-for="course in course">
+                                <option :value="course.c" v-if="course.c > 0"> {{course.s}}</option>
+                            </template>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Degree Title: </label>
+                        <select name="degree_title">
+                            <option value="bachelor">Bachelor</option>
+                            <option value="undergraduate">Undergraduate</option>
+                            <option value="master">Master</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Degree Type: </label>
+                        <select name="degree_type">
+                            <option value="core">Core</option>
+                            <option value="elective">Elective</option>
+                            <option value="project">Project</option>
+                        </select>
+                    </div>
+                    <hr>
+                    <div class="button-container">
+                        <button type="button" onclick="addNewDegree()">Confirm</button>
                         <button type="reset">Reset</button>
                     </div>
-                </div>
+                </form>
             </div>
-        </form>
-    </body>
+        </div>        
+    </body> 
 </html>
