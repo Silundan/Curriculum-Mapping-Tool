@@ -24,9 +24,16 @@ const vuectrl = Vue.createApp({
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                this.post_result = data;
+                if(data.status === 'OK') {
+                    window.location.href = "LOGGED.HTML";
+                } else {
+                    this.post_result = data.message;
+                }
                 this.email = "";
                 this.password = "";
+                if(data.success) {
+                    window.location.href = "LOGGED.html";
+                }
             })
             .catch((error) => {
                 console.error('Error:', error);
