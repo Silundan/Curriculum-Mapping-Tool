@@ -30,27 +30,20 @@
                     </div>
                     <br><br>
                     <!-- Associated Degree -->
-                    <label for="degree">Degree: </label>
+                    <!-- <label for="degree">Degree: </label>
                     <select name="degree" id="degree">
                         <option v-for="degree in degree" :value="degree.degree_id">{{ level[degree.level].level_type }} {{ level[degree.level].level_prefix }} {{ degree.name_suffix }}</option>
                     </select>
-                    <br><br>
+                    <br><br> -->
                     <!-- Course Type -->
-                    <label>Course Type: </label>
+                    <!-- <label>Course Type: </label>
                     <input type="checkbox" id="core"><label for="core"> Core</label>
                     <input type="checkbox" id="elective"><label for="elective"> Elective</label>
                     <input type="checkbox" id="project"><label for="project"> Project</label>
-                    <br><br>
-                    <!-- Course Code -->
-                    <label for="stream_id">Course code: </label>
-                    <select name="stream" id="stream_id">
-                        <option v-for="stream in stream" :value="stream.stream_id"> {{ stream.stream_name }}</option>
-                    </select>   
-                    <input type="text" id="course_code">
-                    <br><br>
+                    <br><br> -->
                     <!-- Course Name -->
                     <label for="course_name">Course name: </label>
-                    <input type="text" id="course_name">
+                    <input type="text" id="course_name" v-model="">
                     <br><br>
                     <!-- Course Link href -->
                     <label for="courselink_href">Course Link: </label>
@@ -73,21 +66,21 @@
                     </select>
                     <br><br>
                     <!-- Pre-requisite -->
-                    <label for="PR_stream_id">Pre-requisite course: </label>
+                    <!-- <label for="PR_stream_id">Pre-requisite course: </label>
                     <select name="stream" id="PR_stream_id">
                         <option v-for="stream in stream" :value="stream.stream_id"> {{ stream.stream_name }}</option>
                     </select>   
                     <input type="text" id="PR_course_code">
-                    <br><br>
+                    <br><br> -->
                     <!-- Incompatible -->
-                    <label for="IN_stream_id">Incompatible course: </label>
+                    <!-- <label for="IN_stream_id">Incompatible course: </label>
                     <select name="stream" id="IN_stream_id">
                         <option v-for="stream in stream" :value="stream.stream_id"> {{ stream.stream_name }}</option>
                     </select>   
                     <input type="text" id="IN_course_code">
-                    <br><br>
+                    <br><br> -->
                     <!-- Confirm button -->
-                    <button type="button" onclick="addNewCourse()">Add course</button> 
+                    <button type="button" onclick="commitEditCourse()">Add course</button> 
                     <button type="reset">Reset</button>
                 </div>
             </form>

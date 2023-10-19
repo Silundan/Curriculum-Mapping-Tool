@@ -214,6 +214,15 @@ const vuectrl = Vue.createApp({
                 }
             }
         },
+        loadCourseDetail(id) {
+            vuectrl.courseID = 0;
+            for (let i=0; i<vuectrl.courseCode.length; i++){
+                if (vuectrl.courseCode[i].course_id === id) {
+                    vuectrl.courseID = i;
+                }
+            }
+        
+        },
 
         fetchData(target_loc, dest_var){
             let req = new XMLHttpRequest();

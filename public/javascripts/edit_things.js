@@ -1,5 +1,8 @@
-function loadCourseDetail() {
-    let course_id = document.getElementById('course_id').value;
+function getCourseID() {
+    let id = document.getElementById('course_id').value;
+    vuectrl.loadCourseDetail(id);
+}
 
-    
+function commitEditCourse() {
+
 }
