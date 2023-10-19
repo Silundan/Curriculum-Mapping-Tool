@@ -40,18 +40,46 @@ const vuectrl = Vue.createApp({
             selectedTerm: 1,
             sid: -1,
             courseCode: [],
-            courseID: -1
+            courseID: -1,
+            currentPage: 1,     
+            itemsPerPage: 8,   
+            currentList: 'degree',
         };
     },
+
+    computed: {
+        totalItemsPages() {
+            return Math.ceil(this.currentItems.length / this.itemsPerPage);
+        },
+
+        currentItems() {
+            if (this.currentList === 'degree') {
+                return this.degree;
+            } else {
+                return this.course;
+            }
+        },
+    
+        paginatedItems() {
+            const start = (this.currentPage - 1) * this.itemsPerPage;
+            const end = start + this.itemsPerPage;
+            return this.currentItems.slice(start, end);
+        }
+    },
+    
     methods: {
         toggleDisplay(type) {
             if (type === 'degree') {
                 this.displayDegree = true;
                 this.displayCourse = false;
+                this.currentList = 'degree';
             } else if (type === 'course') {
                 this.displayDegree = false;
                 this.displayCourse = true;
+                this.currentList = 'course';
             }
+            this.currentPage = 1;
+
         },
         
         doSearching() {
@@ -96,6 +124,23 @@ const vuectrl = Vue.createApp({
             } else {
                 alert("Please enter a search.");
             }
+        },
+       
+        nextPage() {
+            if(this.currentPage < this.totalItemsPages) {
+                this.currentPage++;
+            }
+        },
+
+        prevPage() {
+            if(this.currentPage > 1) {
+                this.currentPage--;
+            }
+        },
+
+        switchList(listName) {   
+            this.currentList = listName;
+            this.currentPage = 1;  
         },
         
         searchCourses() {
