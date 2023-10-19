@@ -24,6 +24,7 @@ const vuectrl = Vue.createApp({
                 6: {t: 6, s: "Trimester 3"},
                 7: {t: 7, s: "All Trimesters"}
             },
+            unit: ["3", "6", "9"],
             pre_requisites: [],
             incompatibles: [],
             matchedCourses: [], 
@@ -39,6 +40,7 @@ const vuectrl = Vue.createApp({
             selectedYear: 1,
             selectedTerm: 1,
             sid: -1,
+            cid: -1,
             courseCode: [],
             courseID: -1,
             currentPage: 1,     
@@ -257,14 +259,15 @@ const vuectrl = Vue.createApp({
                 }
             }
         },
-        loadCourseDetail(id) {
-            vuectrl.courseID = 0;
+        getCourseID() {
+            vuectrl.cid = document.getElementById('course_id').value;
             for (let i=0; i<vuectrl.courseCode.length; i++){
-                if (vuectrl.courseCode[i].course_id === id) {
+                if (vuectrl.courseCode[i].course_id == vuectrl.cid) {
+                    console.log("i = "+i);
                     vuectrl.courseID = i;
+                    break;
                 }
             }
-        
         },
 
         fetchData(target_loc, dest_var){
