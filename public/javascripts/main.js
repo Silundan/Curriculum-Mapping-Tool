@@ -7,7 +7,6 @@ const MAX_COURSES_PER_TERM = 5;
 const vuectrl = Vue.createApp({
     data() {
         return {
-            placeholder: "Result placeholder",
             stream: [],
             level: [],
             course: [],
@@ -15,7 +14,6 @@ const vuectrl = Vue.createApp({
             searchQuery: '',
             degree_course: [],
             type: ["core", "elective","core & elective", "project", "core & project", "elective & project", "core, elective & project"],
-            // term: ["", "Semester 1", "Semester 2", "All Semesters", "Trimester 1", "Trimester 2", "Trimester 3", "All Trimesters"],
             term: {
                 0: {t: 0, s: ""},
                 1: {t: 1, s: "Semester 1"},
