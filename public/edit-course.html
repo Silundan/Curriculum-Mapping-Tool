@@ -55,8 +55,9 @@
                         <label for="units"> Units: </label>
                         <select name="units" id="units">
                             <option :value="-1" selected disabled hidden></option>
-                            <option v-for="u in unit" :value="u" v-if=""> {{ u }}</option>
+                            <option v-for="u in unit" :value="u"> {{ u }}</option>
                         </select>
+                        (Current value: {{ courseCode[courseID].units }})
                         <br><br>
                         <!-- Terms -->
                         <label for="terms"> Available Term(s): </label>
@@ -66,6 +67,7 @@
                                 <option :value="term.t" v-if="term.t > 0"> {{ term.s }}</option>
                             </template>
                         </select>
+                        (Current value: {{ term[courseCode[courseID].term].s }})
                         <br><br>
                         <!-- Pre-requisite -->
                         <!-- <label for="PR_stream_id">Pre-requisite course: </label>

@@ -263,7 +263,6 @@ const vuectrl = Vue.createApp({
             vuectrl.cid = document.getElementById('course_id').value;
             for (let i=0; i<vuectrl.courseCode.length; i++){
                 if (vuectrl.courseCode[i].course_id == vuectrl.cid) {
-                    console.log("i = "+i);
                     vuectrl.courseID = i;
                     break;
                 }

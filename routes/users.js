@@ -156,4 +156,21 @@ router.post('/deleteCourse', (req, res) => {
   });
 
 
+  router.post('/editCourse', (req, res) => {
+    let {course_id, stream_id, course_name, courselink_href, units, term} = req.body;
+    if (isNaN(course_id) || isNaN(stream_id)) {
+      res.sendStatus(400);
+      return;
+    }
+    let query = "UPDATE course SET course_name = ?, courselink_href = ?, units = ?, term = ? WHERE course_id = ? AND stream_id = ?";
+  
+    req.pool.query(query, [course_name, courselink_href, units, term, course_id, stream_id], (error, results) => {
+      if (error) {
+        res.status(500).json({ error: error.message });
+        return;
+      }
+      res.sendStatus(200);
+      });
+    });
+
 module.exports = router;

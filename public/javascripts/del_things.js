@@ -26,7 +26,6 @@ function deleteCourse() {
         return;
     }
     let course_id = document.getElementById('course_id').value;
-    console.log(course_id);
     if (isNaN(course_id) || course_id < 0 || course_id === null || course_id === "") {
         alert('Invalid course!');
         return;
