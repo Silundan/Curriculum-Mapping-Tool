@@ -39,7 +39,10 @@ const vuectrl = Vue.createApp({
             displayDegree: true,
             displayCourse: false,
             selectedYear: 1,
-            selectedTerm: 1
+            selectedTerm: 1,
+            sid: -1,
+            courseCode: [],
+            courseID: -1
         };
     },
     methods: {
@@ -203,6 +206,15 @@ const vuectrl = Vue.createApp({
             // vuectrl.fetchData("/api/pre_requisites", "pre_requisite");
             // vuectrl.fetchData("/api/incompatibles", "incompatibles");
         },
+        formStreamChange() {
+            vuectrl.courseCode.length = 0;
+            for (let i=0; i<vuectrl.course.length; i++) {
+                if (vuectrl.course[i].stream_id === vuectrl.sid) {
+                    vuectrl.courseCode.push(vuectrl.course[i]);
+                }
+            }
+        },
+
         fetchData(target_loc, dest_var){
             let req = new XMLHttpRequest();
             req.onreadystatechange = function () {
