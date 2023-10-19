@@ -1,10 +1,10 @@
-function doAJAX(container, target_loc) {
+function doDelAJAX(container, target_loc) {
     let req = new XMLHttpRequest();
     req.onreadystatechange = function () {
         if (req.readyState === 4 && req.status === 200) {
             if (req.response) {
-                console.log("Success");
-                console.log(req.response);
+                alert("Successfully deleted the course from database!");
+                location.reload();
             } else {
                 console.log("Fail");
             }
@@ -31,8 +31,14 @@ function deleteCourse() {
         alert('Invalid course!');
         return;
     }
-    if (confirm("Do you really want to delete:\n"+ vuectrl.stream[vuectrl.courseCode[course_id].stream_id].stream_name +" "+ vuectrl.courseCode[course_id].course_code+"\n"+vuectrl.courseCode[course_id].course_name +"?") === true) {
+    let courseID = 0;
+    for (let i=0; i<vuectrl.courseCode.length; i++){
+        if (vuectrl.courseCode[i].course_id === course_id) {
+            courseID = i;
+        }
+    }
+    if (confirm("Do you really want to delete:\n"+ vuectrl.stream[vuectrl.courseCode[courseID].stream_id].stream_name +" "+ vuectrl.courseCode[courseID].course_code+"\n"+vuectrl.courseCode[courseID].course_name +"?") === true) {
         let container = {course_id, stream_id};
-        doAJAX(container, "/users/deleteCourse");
+        doDelAJAX(container, "/users/deleteCourse");
     }
 }
