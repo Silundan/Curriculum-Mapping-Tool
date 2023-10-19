@@ -150,7 +150,7 @@
 
     <div class="placeholder_div">
       <ul class="degree-list" v-if="displayDegree">
-        <li v-for="degree in degree" class="degree-item">
+        <li v-for="degree in paginatedItems" class="degree-item">
           <div class="degree-box">
             <div class="degree-name">{{ degree.name }}</div>
             <div>{{ level[degree.level].level_type }} {{ level[degree.level].level_prefix }} {{ degree.name_suffix }}</div>
@@ -158,7 +158,7 @@
         </li>
     </ul>
     <ul class="degree-list" id="course-list" v-if="displayCourse">
-        <li v-for="course in course" class="degree-item">
+        <li v-for="course in paginatedItems" class="degree-item">
             <div class="degree-box">
                 <div>{{ stream[course.stream_id].stream_name }} {{ course.course_code }}</div>
                 <div class="course-name">{{ course.course_name }}</div>
@@ -167,6 +167,9 @@
             </div>
         </li>
     </ul>
+    <button @click="prevPage" :disabled="currentPage <= 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button @click="nextPage" :disabled="currentPage >= totalItemsPages">Next</button>
 
     <p v-if="errorMessage" style="color: red;">{{ errorMessage }}</p>
         
