@@ -158,12 +158,14 @@
     </ul>
     <ul class="degree-list" id="course-list" v-if="displayCourse">
         <li v-for="course in paginatedItems" class="degree-item">
+          <a :href="course.courselink_href" >
             <div class="degree-box">
                 <div>{{ stream[course.stream_id].stream_name }} {{ course.course_code }}</div>
                 <div class="course-name">{{ course.course_name }}</div>
                 <div>Units: {{ course.units }}</div>
                 <div>Availability: {{ term[course.term].s }}</div>
             </div>
+          </a>
         </li>
     </ul>
     <button @click="prevPage" :disabled="currentPage <= 1">Previous</button>
