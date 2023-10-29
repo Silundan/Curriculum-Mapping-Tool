@@ -2,14 +2,14 @@
 
 ## Table of content
 
-1. [About this project](#about)
+1. [About this project](#about-this-project)
 2. [Preparation](#preparation)
 3. [Setting up MySQL user for deployment](#setting-up-mysql-user-for-deployment)
 4. [Deploying the web application](#deploying-the-web-application)
 5. [File structure of the web application](#file-structure-of-the-web-application)
 6. [License](#license)
 
-## About this project <a name="about"></a>
+## About this project
 
 This is a web application serving the purpose of easily managemant and planning of degrees and courses for course coordinators.
 This project is designed for internal use only.
