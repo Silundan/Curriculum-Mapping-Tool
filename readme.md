@@ -7,6 +7,8 @@ This project is designed for internal use only.
 Users can add, delete, and edit the contents and relations of the degrees availabled and assoicated courses.
 We implimented a sand-box mode (study plan planner) with exporting the study plan to a PDF for easy sharing or future reference.
 
+---
+
 ## Preparation
 
 Deploying the web application is quick and easy, provided you have installed the required softwares/frameworks.
@@ -55,13 +57,13 @@ In the following commands, we are using the setting on development server for qu
 
 Default user for the database:-
 
- | catagory | value |
+ | username | password |
  |:---:|:---:|
- | username | admin |
- | password | 12345678 |
+ | admin | 12345678 |
 
 ```sql
 CREATE USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345678';
+FLUSH PRIVILEGES;
 ```
 
 The prepared database included table and database creation, so you can import it right away. (Located in ../\_DATABASE_/ in this archive).
@@ -71,8 +73,58 @@ To import the prepared database:-
 source <full_path_to_the_*.sql_file>
 ```
 
-You can follow the guide [from DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql) should you require more details.
+After that, you can grant the user `admin` the control of the database `adelaide_dev`:-
+
+```sql
+GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES on adelaide_dev.* TO 'admin'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+```
+
+---
 
 ## Deploying the web application
 
-After you set up the environment, you can extract the archive and start using the application.
+After you set up the environment, you can open a terminal to the root folder and start using the application.
+
+### First time setup
+
+For module installation, please run the command once before your first start up of the application:-
+
+```text
+npm i
+```
+
+After that you can start the server with the following command:-
+
+```text
+npm start
+```
+
+By default the server is listening on port 9000 on localhost. [http://localhost:9000](http://localhost:9000).
+
+---
+
+## File structure of the web application
+
+```text
+/
++-- _DATABASE_
+    ... database related files ...
++-- public
+    ... everything accessible on client side will be placed here ...
+    +-- css
+        ... style sheets ...
+    +-- images
+        ... images ...
+    +-- javascripts
+        ... javascripts FOR CLIENT SIDE ...
+    +-- users
+        ... place holder for contents accessible by logged in users only ...
++-- routes
+    ... javascript setting files for the SERVER side ...
+    ... these files are not accessible from the client side and solely for server configuration ...
++-- views
+    ... pre-install debugging templates, recommended to be removed on production version...
+```
+
+Should you wanted to change the database connection information and/or listening port for the application, you may change that in `./server.js`.
