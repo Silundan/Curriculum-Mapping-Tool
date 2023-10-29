@@ -239,6 +239,10 @@ INSERT INTO `users` VALUES (1,'a1234567@adelaide.edu.au','$2b$10$VOY0wpWif8Yzc5J
 UNLOCK TABLES;
 
 --
+-- Dumping events for database 'adelaide_dev'
+--
+
+--
 -- Dumping routines for database 'adelaide_dev'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -251,4 +255,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-19 23:38:20
+-- Dump completed on 2023-10-29 19:29:12
