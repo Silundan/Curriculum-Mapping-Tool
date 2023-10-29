@@ -1,6 +1,15 @@
 # In-house Curriculum Mapping Tool
 
-## About this project
+## Table of content
+
+1. [About this project](#about)
+2. [Preparation](#preparation)
+3. [Setting up MySQL user for deployment](#setting-up-mysql-user-for-deployment)
+4. [Deploying the web application](#deploying-the-web-application)
+5. [File structure of the web application](#file-structure-of-the-web-application)
+6. [License](#license)
+
+## About this project <a name="about"></a>
 
 This is a web application serving the purpose of easily managemant and planning of degrees and courses for course coordinators.
 This project is designed for internal use only.
@@ -14,11 +23,11 @@ We implimented a sand-box mode (study plan planner) with exporting the study pla
 Deploying the web application is quick and easy, provided you have installed the required softwares/frameworks.
 This application is builded with NPM and Node.js, also using MySQL (or MariaDB on linux) as the database backend.
 
-## Installing NPM & Node.js
+### Installing NPM & Node.js
 
 You can acquire the installer of Node.js [here](https://nodejs.org/en/download). Installation on Windows is quite straightforward -- just execute the binary and follow the prompts. For Linux & OSX users, you can consider using nvm for version management, which can be acquired [here](https://github.com/nvm-sh/nvm), and instruction for installation [here](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-## Installing MySQL (or MariaDB)
+### Installing MySQL (or MariaDB)
 
 On Linux machines, you can install the package `mysql-server` from your platform's package managers. On our development environment, we built the database on MySQL 8.0.34. The following instructions are based on Debian variant distros, and using `apt` as package manager.
 
@@ -48,6 +57,8 @@ mysql -u root -p
 ```
 
 and type your newly setup password.
+
+---
 
 ## Setting up MySQL user for deployment
 
@@ -128,3 +139,17 @@ By default the server is listening on port 9000 on localhost. [http://localhost:
 ```
 
 Should you wanted to change the database connection information and/or listening port for the application, you may change that in `./server.js`.
+
+---
+## License
+
+This web application is distributed with MIT License.
+``` text
+Copyright (c) 2023 Denis Li, Michael Ma, Nick Xu, Edison Deng.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
