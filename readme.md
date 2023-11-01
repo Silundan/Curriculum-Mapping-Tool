@@ -141,9 +141,11 @@ By default the server is listening on port 9000 on localhost. [http://localhost:
 Should you wanted to change the database connection information and/or listening port for the application, you may change that in `./server.js`.
 
 ---
+
 ## License
 
 This web application is distributed with MIT License.
+
 ``` text
 Copyright (c) 2023 Denis Li, Michael Ma, Nick Xu, Edison Deng.
 
